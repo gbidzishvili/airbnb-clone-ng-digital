@@ -1,0 +1,15 @@
+.trending-stays {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 10rem auto;
+}
+
+.hotel-list {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+}
+/* h1{
+    bold
+} */

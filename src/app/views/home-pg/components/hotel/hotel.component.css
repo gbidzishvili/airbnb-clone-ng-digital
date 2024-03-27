@@ -1,0 +1,46 @@
+.hotel-image-container {
+    position: relative;
+}
+
+img {
+    border-radius: 0.8rem;
+    max-width: 100%;
+    height: auto;
+}
+.favorite {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.3rem 1rem;
+    background-color: #fff;
+    border-radius: 5rem;
+    font-weight: 500;
+}
+.hotel-info-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    list-style: none;
+}
+.hotel-name {
+    font-weight: bold;
+}
+.hotel-stars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.hotel-description {
+    color: #717171;
+}
+.hotel-price {
+    font-weight: 500;
+}
+mat-icon {
+    font-size: 2rem;
+    height: 2rem;
+}
+.full-span {
+    grid-column: 1/-1;
+}

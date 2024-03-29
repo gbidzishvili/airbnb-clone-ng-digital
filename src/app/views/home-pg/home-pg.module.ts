@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { HomePgComponent } from './home-pg.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ModalsModule } from '../../shared/components/modals/modals.module';
 
 @NgModule({
     declarations: [
@@ -20,6 +21,7 @@ import { MatDialogModule } from '@angular/material/dialog';
         HomePgRoutingModule,
         MatIconModule,
         MatDialogModule,
+        ModalsModule,
     ],
 })
 export class HomePgModule {}

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { FilterModalComponent } from '../../../../navigation/components/header/filter-modal/filter-modal.component';
+import { FilterHotelsModalComponent } from '../../../../shared/components/modals/filter-hotels-modal/filter-hotels-modal.component';
 
 @Component({
     selector: 'app-filter',
@@ -11,7 +11,7 @@ export class FilterComponent {
     constructor(public dialog: MatDialog) {}
 
     openFilterModal() {
-        const dialogRef = this.dialog.open(FilterModalComponent);
+        const dialogRef = this.dialog.open(FilterHotelsModalComponent);
 
         dialogRef.afterClosed().subscribe((result) => {
             console.log(`Dialog result: ${result}`);

@@ -1,1 +1,125 @@
-<p>filter-hotels-modal works!</p>
+<div class="container">
+    <div class="price-range">
+        <div class="header">Price range</div>
+        <div class="sub-header">Nightly prices before fees and taxes</div>
+        <form [formGroup]="sliderForm" class="slider-form">
+            <mat-slider color="accent" min="0" max="500">
+                <input
+                    (input)="
+                        onUpdateSlider(
+                            'numberLow',
+                            sliderForm.get('sliderLow')?.value
+                        )
+                    "
+                    formControlName="sliderLow"
+                    matSliderStartThumb
+                />
+                <input
+                    (input)="
+                        onUpdateSlider(
+                            'numberHigh',
+                            sliderForm.get('sliderHigh')?.value
+                        )
+                    "
+                    formControlName="sliderHigh"
+                    matSliderEndThumb
+                />
+            </mat-slider>
+            <div class="inputs">
+                <input
+                    (input)="
+                        onUpdateSlider(
+                            'sliderLow',
+                            sliderForm.get('numberLow')?.value
+                        )
+                    "
+                    formControlName="numberLow"
+                    type="text"
+                />
+                <input
+                    (input)="
+                        onUpdateSlider(
+                            'sliderHigh',
+                            sliderForm.get('numberHigh')?.value
+                        )
+                    "
+                    formControlName="numberHigh"
+                    type="number"
+                />
+            </div>
+            <button (click)="onclick()">sdf</button>
+        </form>
+    </div>
+    <hr />
+    <div class="type-of-places">
+        <div class="header">Type of place</div>
+        <div class="sub-header">A home all to yourself.</div>
+
+        <mat-list class="places" role="list">
+            <mat-list-item class="link" role="listitem"
+                ><span>any type</span></mat-list-item
+            >
+            <mat-list-item class="link" role="listitem"
+                ><span>rooms</span></mat-list-item
+            >
+            <mat-list-item class="link" role="listitem"
+                ><span>entire home</span></mat-list-item
+            >
+        </mat-list>
+    </div>
+    <hr />
+    <div class="rooms-and-beds flex-column">
+        <div class="header">Rooms and beds</div>
+        <div class="beds">
+            <div>Beds</div>
+            <button>any</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3+</button>
+        </div>
+        <div class="bathrooms">
+            <div>Bathrooms</div>
+            <button>any</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3+</button>
+        </div>
+    </div>
+    <hr />
+    <div class="property-type">
+        <div class="header">Property type</div>
+        <div class="property-type-list">
+            <mat-list-item>House</mat-list-item>
+            <mat-list-item>Apartment</mat-list-item>
+            <mat-list-item>Guesthouse</mat-list-item>
+            <mat-list-item>Hotel</mat-list-item>
+        </div>
+    </div>
+    <hr />
+    <div class="amenities">
+        <div class="header">Amenities</div>
+        <div class="amenities-list">
+            <div class="flex-column">
+                <mat-checkbox class="example-margin">Wifi</mat-checkbox>
+                <mat-checkbox class="example-margin">Kitchen</mat-checkbox>
+                <mat-checkbox class="example-margin">Washer</mat-checkbox>
+            </div>
+            <div class="flex-column">
+                <mat-checkbox class="example-margin">Dryer</mat-checkbox>
+                <mat-checkbox class="example-margin"
+                    >Air conditioning</mat-checkbox
+                >
+                <mat-checkbox class="example-margin">Heating</mat-checkbox>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="host-language">
+        <div class="header">Host language</div>
+        <div class="host-language-list">
+            <mat-checkbox class="example-margin">English</mat-checkbox>
+            <mat-checkbox class="example-margin">Georgian</mat-checkbox>
+        </div>
+    </div>
+    <hr />
+</div>

@@ -1,1 +1,51 @@
-<p>filter-modal works!</p>
+<div class="container">
+    <div class="price-range">
+        <div class="header">Price range</div>
+        <div class="sub-header">Nightly prices before fees and taxes</div>
+        <form [formGroup]="sliderForm" class="slider-form">
+            <mat-slider color="accent" min="0" max="500">
+                <input
+                    (input)="
+                        onUpdateSlider(
+                            'numberLow',
+                            sliderForm.get('sliderLow')?.value
+                        )
+                    "
+                    formControlName="sliderLow"
+                    matSliderStartThumb
+                />
+                <input
+                    (input)="
+                        onUpdateSlider(
+                            'numberHigh',
+                            sliderForm.get('sliderHigh')?.value
+                        )
+                    "
+                    formControlName="sliderHigh"
+                    matSliderEndThumb
+                />
+            </mat-slider>
+            <input
+                (input)="
+                    onUpdateSlider(
+                        'sliderLow',
+                        sliderForm.get('numberLow')?.value
+                    )
+                "
+                formControlName="numberLow"
+                type="text"
+            />
+            <input
+                (input)="
+                    onUpdateSlider(
+                        'sliderHigh',
+                        sliderForm.get('numberHigh')?.value
+                    )
+                "
+                formControlName="numberHigh"
+                type="number"
+            />
+            <button (click)="onclick()">sdf</button>
+        </form>
+    </div>
+</div>

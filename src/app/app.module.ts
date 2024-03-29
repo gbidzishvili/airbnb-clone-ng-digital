@@ -8,16 +8,17 @@ import { NavigationModule } from './navigation/navigation.module';
 import { AuthorizationModule } from './views/authorization/authorization.module';
 import { HomePgModule } from './views/home-pg/home-pg.module';
 import { DetailsPgComponent } from './views/details-pg/details-pg.component';
-import { HttpClientModule } from '@angular/common/http';
+import { DetailsPgModule } from './views/details-pg/details-pg.module';
 
 @NgModule({
-    declarations: [AppComponent, DetailsPgComponent],
+    declarations: [AppComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
         NavigationModule,
         AuthorizationModule,
         HomePgModule,
+        DetailsPgModule,
     ],
     providers: [provideAnimationsAsync()],
     bootstrap: [AppComponent],

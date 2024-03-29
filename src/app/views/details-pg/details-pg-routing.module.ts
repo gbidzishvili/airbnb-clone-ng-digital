@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DetailsPgComponent } from './details-pg.component';
 
 const routes: Routes = [
     {
-        path: '',
+        path: 'details',
+        component: DetailsPgComponent,
     },
 ];
 

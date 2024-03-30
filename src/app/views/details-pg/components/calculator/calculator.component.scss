@@ -1,0 +1,17 @@
+:host {
+    width: 50%;
+}
+.calculator {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    .price {
+        &-details {
+            text-decoration: underline;
+        }
+    }
+}
+.space-between {
+    display: flex;
+    justify-content: space-between;
+}

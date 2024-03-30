@@ -1,0 +1,21 @@
+<div class="calculator">
+    <h1>Calculator</h1>
+    <h1 class="night-price">
+        {{ price | currency : "USD" : "symbol" : "1.0-0" }} night
+    </h1>
+    <div class="price space-between">
+        <span class="price-details">
+            {{ price | currency : "USD" : "symbol" : "1.0-0" }} x
+            {{ nights }} nights
+        </span>
+        <span class="price-total">{{
+            total | currency : "USD" : "symbol" : "1.0-0"
+        }}</span>
+    </div>
+    <hr />
+    <div class="before-taxes space-between">
+        <span>Total before taxes</span>
+        <span>{{ total | currency : "USD" : "symbol" : "1.0-0" }}</span>
+    </div>
+    <button>reserve</button>
+</div>

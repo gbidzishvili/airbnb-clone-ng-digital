@@ -1,6 +1,8 @@
 <div class="carousel">
     <ng-container *ngFor="let slide of slides; let i = index">
         <img
+            width="600px"
+            height="500px"
             *ngIf="i === currentSlide"
             [src]="slide.src"
             [alt]="slide.alt"

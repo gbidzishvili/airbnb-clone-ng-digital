@@ -5,7 +5,11 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
+    .carousel-container {
+        width: 50rem;
+        height: 32rem;
+        padding: 2rem;
+    }
     img {
         max-width: 100%;
         height: auto;

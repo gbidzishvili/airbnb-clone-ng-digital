@@ -5,6 +5,7 @@ import { MatListModule } from '@angular/material/list';
 import { DetailsPgComponent } from './details-pg.component';
 import { MatIconModule } from '@angular/material/icon';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [DetailsPgComponent, CarouselComponent],
@@ -13,6 +14,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
         DetailsPgRoutingModule,
         MatListModule,
         MatIconModule,
+        BrowserAnimationsModule,
     ],
 })
 export class DetailsPgModule {}

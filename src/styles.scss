@@ -1,16 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 html {
-  font-size: 10px;
-  height: 100%;
+    font-size: 10px;
+    height: 100%;
+    --mat-datepicker-calendar-date-in-range-state-background-color: #00000007;
+    --mat-datepicker-calendar-date-selected-state-background-color: #000000;
 }
 
 body {
-  height: 100%;
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+    height: 100%;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }

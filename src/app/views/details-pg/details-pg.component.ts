@@ -1,26 +1,77 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    OnInit,
+    Output,
+} from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { DateRange } from '@angular/material/datepicker';
 
 @Component({
     selector: 'app-details-pg',
     templateUrl: './details-pg.component.html',
     styleUrl: './details-pg.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [provideNativeDateAdapter()],
 })
-export class DetailsPgComponent {
+export class DetailsPgComponent implements OnInit {
+    @Input() nights!: number;
+    selectedRangeValue: DateRange<Date> | undefined;
+    @Output() selectedRangeValueChange = new EventEmitter<DateRange<Date>>();
+    datesForm = new FormGroup({
+        startDate: new FormControl<Date | null>(null),
+        endDate: new FormControl<Date | null>(null),
+    });
     slides = [
         {
-            src: 'https://a0.muscache.com/im/pictures/miso/Hosting-49645126/original/835c2f2a-fc7f-4a57-a6f3-24a70161f0d8.jpeg?im_w=1200',
+            src: 'https://a0.muscache.com/im/pictures/8be48753-223a-46d3-977d-d3c97d0774a4.jpg?im_w=1200',
 
             alt: 'hotel-image',
         },
         {
-            src: 'https://a0.muscache.com/im/pictures/miso/Hosting-49645126/original/25560347-6fd0-492c-aea3-9d32e318ad02.jpeg?im_w=720',
+            src: 'https://a0.muscache.com/im/pictures/6bd13134-e0cd-4911-b195-fad24f68f843.jpg?im_w=1200',
 
             alt: 'hotel-image',
         },
         {
-            src: 'https://a0.muscache.com/im/pictures/miso/Hosting-49645126/original/40d52005-b28d-4b50-87a9-fd30c15cd63b.jpeg?im_w=720',
+            src: 'https://a0.muscache.com/im/pictures/00404d70-0064-48e4-84de-f16f45820f80.jpg?im_w=1200',
             alt: 'hotel-image',
         },
     ];
+    ngOnInit(): void {
+        console.log(this.datesForm.get('startDate')?.value);
+    }
+
+    selectedChange(m: any) {
+        console.log('m is this:', m);
+        if (!this.selectedRangeValue?.start || this.selectedRangeValue?.end) {
+            this.selectedRangeValue = new DateRange<Date>(m, null);
+        } else {
+            const start = this.selectedRangeValue.start;
+            const end = m;
+            if (end < start) {
+                this.selectedRangeValue = new DateRange<Date>(end, start);
+            } else {
+                this.selectedRangeValue = new DateRange<Date>(start, end);
+            }
+            this.countDays(
+                this.selectedRangeValue.start,
+                this.selectedRangeValue.end
+            );
+        }
+        this.selectedRangeValueChange.emit(this.selectedRangeValue);
+    }
+    countDays(start: any, end: any) {
+        let startDate = new Date(start);
+        let endDate = new Date(end);
+        this.datesForm?.get('startDate')?.setValue(startDate);
+        console.log(this.datesForm.get('startDate')?.value);
+        // Calculate the difference in milliseconds. Ensure Operands Are Treated as Numbers
+        let differenceInMilliseconds = +endDate - +startDate;
+        let differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24);
+        this.nights = differenceInDays;
+    }
 }

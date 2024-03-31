@@ -21,4 +21,23 @@
             and lemon
         </div>
     </div>
+    <div style="display: flex; justify-content: center; width: 100%">
+        <div class="calendar">
+            <mat-calendar
+                [selected]="selectedRangeValue"
+                (selectedChange)="selectedChange($event)"
+            >
+            </mat-calendar>
+            <div style="display: flex; justify-content: space-between">
+                <div class="start-date">
+                    Start Date:
+                    {{ selectedRangeValue?.start | date : "shortDate" }}
+                </div>
+                <div class="end-date">
+                    End Date: {{ selectedRangeValue?.end | date : "shortDate" }}
+                </div>
+            </div>
+        </div>
+        <app-calculator [nights]="nights"></app-calculator>
+    </div>
 </div>

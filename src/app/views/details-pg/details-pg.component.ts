@@ -9,6 +9,7 @@ import {
 import { FormGroup, FormControl } from '@angular/forms';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { DateRange } from '@angular/material/datepicker';
+import { Loader } from '@googlemaps/js-api-loader';
 
 @Component({
     selector: 'app-details-pg',
@@ -42,9 +43,21 @@ export class DetailsPgComponent implements OnInit {
         },
     ];
     ngOnInit(): void {
-        console.log(this.datesForm.get('startDate')?.value);
-    }
+        const loader = new Loader({
+            apiKey: 'AIzaSyAYpfjjDa8iY-FI-Mc3b8YM4iUS60We7pQ',
+            version: 'weekly',
+        });
 
+        loader.load().then(async () => {
+            const { Map } = (await google.maps.importLibrary(
+                'maps'
+            )) as google.maps.MapsLibrary;
+            let map = new Map(document.getElementById('map') as HTMLElement, {
+                center: { lat: 41.7151377, lng: 44.827096 },
+                zoom: 8,
+            });
+        });
+    }
     selectedChange(m: any) {
         console.log('m is this:', m);
         if (!this.selectedRangeValue?.start || this.selectedRangeValue?.end) {

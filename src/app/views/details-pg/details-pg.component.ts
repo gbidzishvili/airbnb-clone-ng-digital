@@ -54,7 +54,7 @@ export class DetailsPgComponent implements OnInit {
             )) as google.maps.MapsLibrary;
             let map = new Map(document.getElementById('map') as HTMLElement, {
                 center: { lat: 41.7151377, lng: 44.827096 },
-                zoom: 8,
+                zoom: 14,
             });
         });
     }

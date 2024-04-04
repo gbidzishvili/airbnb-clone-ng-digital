@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
+import { TextShortenerPipe } from './text-shortener.pipe';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+    declarations: [TextShortenerPipe],
+    imports: [CommonModule],
+    exports: [TextShortenerPipe],
 })
-export class PipesModule { }
+export class PipesModule {}

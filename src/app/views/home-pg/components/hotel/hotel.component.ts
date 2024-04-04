@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Hotel } from '../../models/hotel.model';
 
 @Component({
     selector: 'app-hotel',
@@ -6,4 +7,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     styleUrl: './hotel.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HotelComponent {}
+export class HotelComponent {
+    @Input() hotelInfo!: Hotel;
+}

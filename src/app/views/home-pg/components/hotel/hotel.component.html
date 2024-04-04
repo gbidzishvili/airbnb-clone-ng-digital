@@ -1,20 +1,24 @@
-<section class="hotel-display">
-    <div class="hotel-image-container">
+<section class="hotel-card">
+    <div class="hotel-card-image-container">
         <img
             width="300px"
             height="200px"
-            class="hotel-image"
-            src="https://a0.muscache.com/im/pictures/miso/Hosting-49924321/original/cc3a98b7-d83e-4684-bb03-2b2ce6dd480d.jpeg?im_w=720"
+            [src]="hotelInfo.img"
             alt="hotel image"
         />
-        <span class="favorite">Guest favorite</span>
+        <span class="favorite" *ngIf="hotelInfo.favorite">Guest favorite</span>
     </div>
-    <ul class="hotel-info-container">
-        <li class="hotel-name">Treehouse in Index</li>
-        <li class="hotel-stars">
-            <mat-icon>star</mat-icon><span> 5.0 (262)</span>
+    <ul class="hotel-card-info-container">
+        <li class="hotel-name">
+            {{ hotelInfo.name | textShortener : 23 }}
         </li>
-        <li class="hotel-description full-span">The TreeFramed Cabin</li>
-        <li class="hotel-price full-span">$ 482 night</li>
+        <li class="hotel-reviews">
+            <mat-icon>star</mat-icon
+            ><span>{{ hotelInfo.stars }} ({{ hotelInfo.views }})</span>
+        </li>
+        <li class="hotel-description">
+            {{ hotelInfo.description | textShortener : 40 }}
+        </li>
+        <li class="hotel-price">$ {{ hotelInfo.price }} night</li>
     </ul>
 </section>

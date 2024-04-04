@@ -1,7 +1,9 @@
 export class Hotel {
-  image!: string;
-  name!: string;
-  description!: string;
-  stars!: number;
-  price!: number;
+    img!: string;
+    favorite!: boolean;
+    name!: string;
+    stars!: number;
+    views!: number;
+    description!: string;
+    price!: number;
 }

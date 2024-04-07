@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TextShortenerPipe } from './TextShortenerPipe';
+import { TextShortenerPipe } from './text-shortener.pipe';
 
 @NgModule({
     declarations: [TextShortenerPipe],

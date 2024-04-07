@@ -1,42 +1,39 @@
+@mixin d-flex-align-center {
+    display: flex;
+    align-items: center;
+}
 :host {
-  margin-top: auto;
+    margin-top: auto;
 }
 mat-toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 4rem;
-}
-div {
-  font-size: 1.4rem;
-}
-span {
-  line-height: 1.4rem;
-}
-.footer-links {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-.language {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-}
-.currency {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.social-media {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-img {
-  width: 1.8rem;
-  height: 1.8rem;
-  cursor: pointer;
+    @include d-flex-align-center;
+    justify-content: space-between;
+    padding: 0 4rem;
+    p,
+    figcaption,
+    span {
+        font-size: 1.4rem;
+    }
+    .footer-links {
+        @include d-flex-align-center;
+        gap: 2rem;
+        .language,
+        .currency {
+            @include d-flex-align-center;
+            cursor: pointer;
+        }
+        .language {
+            gap: 0.5rem;
+        }
+        .social-icons {
+            @include d-flex-align-center;
+            gap: 1rem;
+            list-style-type: none;
+        }
+    }
+    img {
+        width: 1.8rem;
+        height: 1.8rem;
+        cursor: pointer;
+    }
 }

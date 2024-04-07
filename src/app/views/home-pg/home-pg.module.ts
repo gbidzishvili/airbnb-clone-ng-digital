@@ -8,7 +8,7 @@ import { HomePgComponent } from './home-pg.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalsModule } from '../../shared/components/modals/modals.module';
-import { TextShortenerPipe } from '../../shared/pipes/text-shortener.pipe';
+import { TextShortenerPipe } from '../../shared/pipes/TextShortenerPipe';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 
 @NgModule({

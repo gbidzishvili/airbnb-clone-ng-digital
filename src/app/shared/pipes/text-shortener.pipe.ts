@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Tuple } from '../../core/models/typle.model';
 
 @Pipe({
     name: 'textShortener',

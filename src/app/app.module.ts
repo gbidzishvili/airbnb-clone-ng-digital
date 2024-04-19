@@ -9,9 +9,10 @@ import { AuthorizationModule } from './views/authorization/authorization.module'
 import { HomePgModule } from './views/home-pg/home-pg.module';
 import { DetailsPgComponent } from './views/details-pg/details-pg.component';
 import { DetailsPgModule } from './views/details-pg/details-pg.module';
+import { HomePgComponent } from './views/home-pg/home-pg.component';
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [AppComponent, HomePgComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,

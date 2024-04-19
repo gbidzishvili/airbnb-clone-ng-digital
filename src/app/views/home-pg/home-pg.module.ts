@@ -12,7 +12,7 @@ import { PipesModule } from '../../shared/pipes/pipes.module';
 
 @NgModule({
     declarations: [
-        HomePgComponent,
+        // HomePgComponent,
         HotelComponent,
         HotelListComponent,
         FilterComponent,

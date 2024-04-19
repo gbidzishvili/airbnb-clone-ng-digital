@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Input,
+    OnInit,
+} from '@angular/core';
+import { BaseProxyService } from '../../../../core/services/base-proxy.service';
 
 @Component({
     selector: 'app-hotel-list',
@@ -6,8 +12,14 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     styleUrl: './hotel-list.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HotelListComponent {
+export class HotelListComponent implements OnInit {
     @Input() title: string = '';
+    constructor(private baseProxySrv: BaseProxyService) {}
+    ngOnInit() {
+        this.baseProxySrv
+            .get('http://www.airbnb-digital-students.somee.com/getall')
+            .subscribe((hotel) => console.log(hotel));
+    }
     hotels = [
         {
             img: 'https://a0.muscache.com/im/pictures/miso/Hosting-49924321/original/cc3a98b7-d83e-4684-bb03-2b2ce6dd480d.jpeg?im_w=720',
@@ -33,7 +45,8 @@ export class HotelListComponent {
             name: 'Moinho das Feteiras | The Mill',
             stars: 5.0,
             views: 63,
-            description: 'Windmill in Ponta Delgada, Portugal',
+            description:
+                'Windmill in Ponta Delgada, Portugal  Windmill in Ponta Delgada, Portugal ',
             price: 799,
         },
         {

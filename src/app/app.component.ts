@@ -16,7 +16,6 @@ import {
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
-    encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent implements OnInit {
     ngOnInit(): void {}

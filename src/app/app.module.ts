@@ -12,7 +12,7 @@ import { DetailsPgModule } from './views/details-pg/details-pg.module';
 import { HomePgComponent } from './views/home-pg/home-pg.component';
 
 @NgModule({
-    declarations: [AppComponent, HomePgComponent],
+    declarations: [AppComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,

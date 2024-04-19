@@ -8,12 +8,13 @@ import { HomePgComponent } from './home-pg.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalsModule } from '../../shared/components/modals/modals.module';
-import { TextShortenerPipe } from '../../shared/pipes/TextShortenerPipe';
+import { TextShortenerPipe } from '../../shared/pipes/text-shortener.pipe';
 import { PipesModule } from '../../shared/pipes/pipes.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
-        // HomePgComponent,
+        HomePgComponent,
         HotelComponent,
         HotelListComponent,
         FilterComponent,
@@ -25,6 +26,7 @@ import { PipesModule } from '../../shared/pipes/pipes.module';
         MatDialogModule,
         ModalsModule,
         PipesModule,
+        HttpClientModule,
     ],
 })
 export class HomePgModule {}

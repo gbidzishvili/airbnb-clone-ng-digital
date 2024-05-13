@@ -12,6 +12,8 @@ import { TextShortenerPipe } from '../../shared/pipes/text-shortener.pipe';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AmenitiesComponent } from './components/amenities/amenities.component';
+import { HammerModule } from '@angular/platform-browser';
+import { IgxCarouselModule } from 'igniteui-angular';
 
 @NgModule({
     declarations: [
@@ -29,6 +31,8 @@ import { AmenitiesComponent } from './components/amenities/amenities.component';
         ModalsModule,
         PipesModule,
         HttpClientModule,
+        HammerModule,
+        IgxCarouselModule,
     ],
 })
 export class HomePgModule {}

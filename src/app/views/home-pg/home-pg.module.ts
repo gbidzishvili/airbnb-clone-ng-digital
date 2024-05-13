@@ -11,6 +11,7 @@ import { ModalsModule } from '../../shared/components/modals/modals.module';
 import { TextShortenerPipe } from '../../shared/pipes/text-shortener.pipe';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { HttpClientModule } from '@angular/common/http';
+import { AmenitiesComponent } from './components/amenities/amenities.component';
 
 @NgModule({
     declarations: [
@@ -18,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
         HotelComponent,
         HotelListComponent,
         FilterComponent,
+        AmenitiesComponent,
     ],
     imports: [
         CommonModule,

@@ -6,13 +6,13 @@ import { DirectivesModule } from './directives/directives.module';
 import { ModulesModule } from './modules/modules.module';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    ComponentsModule,
-    PipesModule,
-    DirectivesModule,
-    ModulesModule,
-  ],
+    declarations: [],
+    imports: [
+        CommonModule,
+        ComponentsModule,
+        PipesModule,
+        DirectivesModule,
+        ModulesModule,
+    ],
 })
 export class SharedModule {}

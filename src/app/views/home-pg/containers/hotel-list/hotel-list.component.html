@@ -1,10 +1,4 @@
 <section class="trending-stays">
-    <header>
-        <h1>{{ title }}</h1>
-        <h2>
-            These homes have great reviews and get lots of attention on Airbnb.
-        </h2>
-    </header>
     <ul class="hotel-list">
         <li *ngFor="let hotel of hotels">
             <app-hotel [hotelInfo]="hotel"></app-hotel>

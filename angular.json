@@ -36,7 +36,10 @@
                             "@angular/material/prebuilt-themes/indigo-pink.css",
                             "src/styles.scss"
                         ],
-                        "scripts": []
+                        "scripts": ["./node_modules/hammerjs/hammer.min.js"],
+                        "stylePreprocessorOptions": {
+                            "includePaths": ["node_modules"]
+                        }
                     },
                     "configurations": {
                         "production": {
@@ -91,13 +94,16 @@
                             "@angular/material/prebuilt-themes/indigo-pink.css",
                             "src/styles.scss"
                         ],
-                        "scripts": []
+                        "scripts": ["./node_modules/hammerjs/hammer.min.js"],
+                        "stylePreprocessorOptions": {
+                            "includePaths": ["node_modules"]
+                        }
                     }
                 }
             }
         }
     },
     "cli": {
-      "analytics": "4c998da3-d1d8-4396-9a61-a05348cbed6e"
+        "analytics": "4c998da3-d1d8-4396-9a61-a05348cbed6e"
     }
 }

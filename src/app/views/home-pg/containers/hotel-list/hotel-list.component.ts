@@ -16,9 +16,9 @@ export class HotelListComponent implements OnInit {
     @Input() title: string = '';
     constructor(private baseProxySrv: BaseProxyService) {}
     ngOnInit() {
-        this.baseProxySrv
-            .get('http://www.airbnb-digital-students.somee.com/get-all-hotels')
-            .subscribe((hotel) => console.log(hotel));
+        // this.baseProxySrv
+        //     .get('http://www.airbnb-digital-students.somee.com/get-all-hotels')
+        //     .subscribe((hotel) => console.log(hotel));
     }
     hotels = [
         {

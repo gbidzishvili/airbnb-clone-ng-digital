@@ -1,3 +1,64 @@
-<mat-toolbar>
-    <span>Header</span>
-</mat-toolbar>
+<div class="container">
+    <img
+        width="100px"
+        height="50px"
+        src="../../../../assets/icons/abnb.svg"
+        alt="airbnb logo"
+    />
+    <div>
+        <button
+            mat-icon-button
+            [matMenuTriggerFor]="language"
+            aria-label="Example icon-button with a menu"
+        >
+            <div class="switch-language">
+                <img
+                    class="change-language-ic"
+                    src="../../../../assets/icons/globe-svgrepo-com.svg"
+                    alt="change language icon"
+                />
+                <span>English (US)</span>
+            </div>
+        </button>
+        <mat-menu #language="matMenu">
+            <ng-template matMenuContent>
+                <button mat-menu-item class="menu-item-md">
+                    <span>English</span>
+                </button>
+                <button mat-menu-item class="menu-item-md">
+                    <span>Georgian</span>
+                </button>
+            </ng-template>
+        </mat-menu>
+        <button
+            mat-icon-button
+            [matMenuTriggerFor]="menu"
+            aria-label="Example icon-button with a menu"
+        >
+            <div class="menu">
+                <img
+                    class="menu-ic"
+                    src="../../../../assets/icons/menu-icon.svg"
+                    alt="menu icon"
+                />
+                <img
+                    class="user-ic"
+                    src="../../../../assets/icons/user.svg"
+                    alt="user sign in icon"
+                />
+            </div>
+        </button>
+        <mat-menu #menu="matMenu">
+            <ng-template matMenuContent>
+                <button mat-menu-item class="menu-item-s">
+                    <mat-icon>app_registration</mat-icon>
+                    <span>Sign up</span>
+                </button>
+                <button mat-menu-item class="menu-item-s">
+                    <mat-icon>login</mat-icon>
+                    <span>log in</span>
+                </button>
+            </ng-template>
+        </mat-menu>
+    </div>
+</div>

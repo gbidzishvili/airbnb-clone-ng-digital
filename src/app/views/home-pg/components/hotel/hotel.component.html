@@ -3,22 +3,23 @@
         <img
             width="300px"
             height="200px"
-            [src]="hotelInfo.img"
+            [src]="hotelInfo.images[0].url"
             alt="hotel image"
         />
-        <span class="favorite" *ngIf="hotelInfo.favorite">Guest favorite</span>
+        <!-- <span class="favorite" *ngIf="hotelInfo.favorite">Guest favorite</span> -->
     </div>
     <ul class="hotel-card-info-container">
         <li class="hotel-name">
             {{ hotelInfo.name | textShortener : 23 }}
         </li>
         <li class="hotel-reviews">
-            <mat-icon>star</mat-icon
-            ><span>{{ hotelInfo.stars }} ({{ hotelInfo.views }})</span>
+            <mat-icon>star</mat-icon><span>{{ hotelInfo.rating }} </span>
         </li>
         <li class="hotel-description">
             {{ hotelInfo.description | textShortener : 40 }}
         </li>
-        <li class="hotel-price">$ {{ hotelInfo.price }} night</li>
+        <li class="hotel-price">
+            $ {{ hotelInfo.rooms[0].pricePerNight }} night
+        </li>
     </ul>
 </section>

@@ -1,0 +1,9 @@
+<ul class="hotels">
+    <li *ngFor="let hotel of hotels | slice : 19">
+        <figure
+            class="card-image"
+            [innerHTML]="hotel.image | safehtml"
+        ></figure>
+        <figcaption>{{ hotel.name | textShortener : 12 }}</figcaption>
+    </li>
+</ul>

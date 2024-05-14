@@ -12,9 +12,10 @@ import { TextShortenerPipe } from '../../shared/pipes/text-shortener.pipe';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AmenitiesComponent } from './components/amenities/amenities.component';
-import { HammerModule } from '@angular/platform-browser';
-import { IgxCarouselModule } from 'igniteui-angular';
+import { BrowserModule, HammerModule } from '@angular/platform-browser';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedComponentsModule } from '../../shared/components/shared-components.module';
 @NgModule({
     declarations: [
         HomePgComponent,
@@ -24,6 +25,8 @@ import { IgxCarouselModule } from 'igniteui-angular';
         AmenitiesComponent,
     ],
     imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
         CommonModule,
         HomePgRoutingModule,
         MatIconModule,
@@ -31,8 +34,7 @@ import { IgxCarouselModule } from 'igniteui-angular';
         ModalsModule,
         PipesModule,
         HttpClientModule,
-        HammerModule,
-        IgxCarouselModule,
+        SharedComponentsModule,
     ],
 })
 export class HomePgModule {}

@@ -2,10 +2,49 @@
     cursor: pointer;
     &-image-container {
         position: relative;
+        .carousel {
+            display: flex;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        // .carousel-inner {
+        //     display: flex;
+        //     transition: transform 0.5s ease-in-out;
+        // }
+
+        // .carousel-item {
+        //     min-width: 100%;
+        //     flex: 0 0 100%;
+        // }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .carousel-control-prev {
+            left: 10px;
+        }
+
+        .carousel-control-next {
+            right: 10px;
+        }
         img {
             border-radius: 0.8rem;
-            max-width: 100%;
+            max-width: 29rem;
             height: 29rem;
+        }
+        .active {
+            transform: translate(0%);
         }
         .favorite {
             position: absolute;

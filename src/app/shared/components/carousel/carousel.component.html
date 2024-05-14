@@ -1,0 +1,19 @@
+<div class="container">
+    <button class="btn left" (click)="previousSlide()">
+        <mat-icon>chevron_left</mat-icon>
+    </button>
+    <button class="btn right" (click)="nextSlide()">
+        <mat-icon>chevron_right</mat-icon>
+    </button>
+    <img width="300px" height="300px" [src]="getcurrentImageUrl()" alt="" />
+    <div class="dotsContainer">
+        <div
+            class="dot"
+            *ngFor="let slide of slides; let i = index"
+            (click)="goToSlide(i)"
+            [ngClass]="{ 'active-dot': i === currentSlide }"
+        >
+            •
+        </div>
+    </div>
+</div>

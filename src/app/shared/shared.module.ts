@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ComponentsModule } from './components/components.module';
+import { SharedComponentsModule } from './components/shared-components.module';
 import { PipesModule } from './pipes/pipes.module';
 import { DirectivesModule } from './directives/directives.module';
 import { ModulesModule } from './modules/modules.module';
@@ -9,7 +9,7 @@ import { ModulesModule } from './modules/modules.module';
     declarations: [],
     imports: [
         CommonModule,
-        ComponentsModule,
+        SharedComponentsModule,
         PipesModule,
         DirectivesModule,
         ModulesModule,

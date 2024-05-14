@@ -7,21 +7,19 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { NavigationModule } from './navigation/navigation.module';
 import { AuthorizationModule } from './views/authorization/authorization.module';
 import { HomePgModule } from './views/home-pg/home-pg.module';
-import { DetailsPgComponent } from './views/details-pg/details-pg.component';
 import { DetailsPgModule } from './views/details-pg/details-pg.module';
-import { HomePgComponent } from './views/home-pg/home-pg.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [AppComponent],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         AppRoutingModule,
         NavigationModule,
         AuthorizationModule,
         HomePgModule,
         DetailsPgModule,
-        BrowserAnimationsModule,
     ],
     providers: [provideAnimationsAsync()],
     bootstrap: [AppComponent],

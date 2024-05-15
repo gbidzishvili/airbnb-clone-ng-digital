@@ -1,9 +1,10 @@
 import {
     animate,
-    state,
     style,
     transition,
     trigger,
+    query,
+    group,
 } from '@angular/animations';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
@@ -13,39 +14,72 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     styleUrls: ['./carousel.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [
-        trigger('slideInLeft', [
-            transition(':enter', [
-                animate(
-                    '500ms ease-out',
-                    style({ transform: 'translateX(-300px)' })
+        trigger('slideInOut', [
+            transition(':increment', [
+                query(
+                    ':enter, :leave',
+                    style({ position: 'absolute', width: '100%' }),
+                    { optional: true }
                 ),
+                group([
+                    query(
+                        ':leave',
+                        [
+                            animate(
+                                '500ms ease-out',
+                                style({ transform: 'translateX(-100%)' })
+                            ),
+                        ],
+                        { optional: true }
+                    ),
+                    query(
+                        ':enter',
+                        [
+                            style({ transform: 'translateX(100%)' }),
+                            animate(
+                                '500ms ease-out',
+                                style({ transform: 'translateX(0)' })
+                            ),
+                        ],
+                        { optional: true }
+                    ),
+                ]),
             ]),
-            transition(':leave', [
-                animate(
-                    '500ms ease-out',
-                    style({ transform: 'translateX(-300px)' })
+            transition(':decrement', [
+                query(
+                    ':enter, :leave',
+                    style({ position: 'absolute', width: '100%' }),
+                    { optional: true }
                 ),
-            ]),
-        ]),
-        trigger('slideInRight', [
-            transition(':enter', [
-                animate(
-                    '500ms ease-out',
-                    style({ transform: 'translateX(300px)' })
-                ),
-            ]),
-            transition(':leave', [
-                animate(
-                    '500ms ease-out',
-                    style({ transform: 'translateX(300px)' })
-                ),
+                group([
+                    query(
+                        ':leave',
+                        [
+                            animate(
+                                '500ms ease-out',
+                                style({ transform: 'translateX(100%)' })
+                            ),
+                        ],
+                        { optional: true }
+                    ),
+                    query(
+                        ':enter',
+                        [
+                            style({ transform: 'translateX(-100%)' }),
+                            animate(
+                                '500ms ease-out',
+                                style({ transform: 'translateX(0)' })
+                            ),
+                        ],
+                        { optional: true }
+                    ),
+                ]),
             ]),
         ]),
     ],
 })
 export class CarouselComponent {
     currentSlide = 0;
-    direction = 'left';
     slides = [
         {
             image: 'https://media.istockphoto.com/id/1160446488/photo/tbilisi-downtown-georgia-taken-in-april-2019.jpg?s=612x612&w=0&k=20&c=yybfqVCUZsy8qNWMnpmX1AjAmbuXtj5Kg5aekaeHj7M=',
@@ -60,26 +94,17 @@ export class CarouselComponent {
             caption: 'Slide 3',
         },
     ];
-    imageVisible(i: number) {
-        return i === this.currentSlide;
-    }
+
     goToSlide(index: number) {
-        // const difference = index - this.currentSlide;
-        // this.difference += difference * -300;
-        // console.log(this.difference);
-        // this.translateX = `translateX(${this.difference}px)`;
-        // this.direction = difference > 0 ? 'left' : 'right';
         this.currentSlide = index;
     }
 
     nextSlide() {
-        this.direction = 'right';
         const nextSlide = (this.currentSlide + 1) % this.slides.length;
         this.goToSlide(nextSlide);
     }
 
     previousSlide() {
-        this.direction = 'left';
         const previousSlide =
             (this.currentSlide - 1 + this.slides.length) % this.slides.length;
         this.goToSlide(previousSlide);

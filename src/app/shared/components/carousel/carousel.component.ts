@@ -6,30 +6,38 @@ import {
     trigger,
 } from '@angular/animations';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { transformMenu } from '@angular/material/menu';
 
 @Component({
     selector: 'app-carousel',
     templateUrl: './carousel.component.html',
-    styleUrl: './carousel.component.scss',
+    styleUrls: ['./carousel.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [
-        trigger('slideInOut', [
-            // state('start', style({ transform: 'translateX(0%)' })),
-            state('left', style({ transform: 'translateX(-100%)' })),
-            state('right', style({ transform: 'translateX(100%)' })),
-            transition('* => right', [
-                style({ transform: 'translateX(0%)' }),
+        trigger('slideInLeft', [
+            transition(':enter', [
                 animate(
-                    '0.5s ease-in-out',
-                    style({ transform: 'translateX(100%)' })
+                    '500ms ease-out',
+                    style({ transform: 'translateX(-300px)' })
                 ),
             ]),
-            transition('* => left', [
-                style({ transform: 'translateX(0%)' }),
+            transition(':leave', [
                 animate(
-                    '0.5s ease-in-out',
-                    style({ transform: 'translateX(-100%)' })
+                    '500ms ease-out',
+                    style({ transform: 'translateX(-300px)' })
+                ),
+            ]),
+        ]),
+        trigger('slideInRight', [
+            transition(':enter', [
+                animate(
+                    '500ms ease-out',
+                    style({ transform: 'translateX(300px)' })
+                ),
+            ]),
+            transition(':leave', [
+                animate(
+                    '500ms ease-out',
+                    style({ transform: 'translateX(300px)' })
                 ),
             ]),
         ]),
@@ -37,7 +45,7 @@ import { transformMenu } from '@angular/material/menu';
 })
 export class CarouselComponent {
     currentSlide = 0;
-    animationState = 'left';
+    direction = 'left';
     slides = [
         {
             image: 'https://media.istockphoto.com/id/1160446488/photo/tbilisi-downtown-georgia-taken-in-april-2019.jpg?s=612x612&w=0&k=20&c=yybfqVCUZsy8qNWMnpmX1AjAmbuXtj5Kg5aekaeHj7M=',
@@ -52,17 +60,28 @@ export class CarouselComponent {
             caption: 'Slide 3',
         },
     ];
-    getcurrentImageUrl() {
-        return this.slides[this.currentSlide].image;
+    imageVisible(i: number) {
+        return i === this.currentSlide;
     }
-    goToSlide(i:number){
-      this.currentSlide = i
+    goToSlide(index: number) {
+        // const difference = index - this.currentSlide;
+        // this.difference += difference * -300;
+        // console.log(this.difference);
+        // this.translateX = `translateX(${this.difference}px)`;
+        // this.direction = difference > 0 ? 'left' : 'right';
+        this.currentSlide = index;
     }
+
     nextSlide() {
-        this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+        this.direction = 'right';
+        const nextSlide = (this.currentSlide + 1) % this.slides.length;
+        this.goToSlide(nextSlide);
     }
+
     previousSlide() {
-        this.currentSlide =
+        this.direction = 'left';
+        const previousSlide =
             (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+        this.goToSlide(previousSlide);
     }
 }

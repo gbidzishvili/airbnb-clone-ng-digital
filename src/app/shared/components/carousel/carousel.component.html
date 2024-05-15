@@ -1,8 +1,16 @@
 <div class="container">
-    <button class="btn left" (click)="previousSlide()">
+    <button
+        *ngIf="currentSlide !== 0"
+        class="btn left"
+        (click)="previousSlide()"
+    >
         <mat-icon>chevron_left</mat-icon>
     </button>
-    <button class="btn right" (click)="nextSlide()">
+    <button
+        *ngIf="currentSlide !== slides.length - 1"
+        class="btn right"
+        (click)="nextSlide()"
+    >
         <mat-icon>chevron_right</mat-icon>
     </button>
     <div class="slider-container">

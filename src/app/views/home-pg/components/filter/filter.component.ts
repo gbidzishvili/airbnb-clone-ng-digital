@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FilterHotelsModalComponent } from '../../../../shared/components/modals/filter-hotels-modal/filter-hotels-modal.component';
 
@@ -7,8 +7,11 @@ import { FilterHotelsModalComponent } from '../../../../shared/components/modals
     templateUrl: './filter.component.html',
     styleUrl: './filter.component.scss',
 })
-export class FilterComponent {
+export class FilterComponent implements OnInit {
     constructor(public dialog: MatDialog) {}
+    ngOnInit(): void {
+        this.dialog.open(FilterHotelsModalComponent);
+    }
 
     openFilterModal() {
         const dialogRef = this.dialog.open(FilterHotelsModalComponent);

@@ -16,6 +16,7 @@ import { BrowserModule, HammerModule } from '@angular/platform-browser';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedComponentsModule } from '../../shared/components/shared-components.module';
+import { FiltersContainerComponent } from './containers/filters-container/filters-container.component';
 @NgModule({
     declarations: [
         HomePgComponent,
@@ -23,6 +24,7 @@ import { SharedComponentsModule } from '../../shared/components/shared-component
         HotelListComponent,
         FilterComponent,
         AmenitiesComponent,
+        FiltersContainerComponent,
     ],
     imports: [
         BrowserModule,

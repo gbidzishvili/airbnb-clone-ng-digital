@@ -7,7 +7,7 @@
         <mat-icon>chevron_left</mat-icon>
     </button>
     <button
-        *ngIf="currentSlide !== hotels.length - 10"
+        *ngIf="currentSlide !== amenities.length - 10"
         class="btn right"
         (click)="nextSlide()"
     >
@@ -15,9 +15,12 @@
     </button>
 
     <div class="hotels-container" [ngStyle]="getContainerStyle()">
-        <li *ngFor="let hotel of hotels; let i = index">
-            <div class="card-image" [innerHTML]="hotel.image | safehtml"></div>
-            <div class="amenity">{{ hotel.name | textShortener : 9 }}</div>
+        <li *ngFor="let amenity of amenities; let i = index">
+            <div
+                class="card-image"
+                [innerHTML]="amenity.image | safehtml"
+            ></div>
+            <div class="amenity">{{ amenity.name | textShortener : 9 }}</div>
         </li>
     </div>
 </ul>

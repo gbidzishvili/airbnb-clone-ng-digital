@@ -1,5 +1,6 @@
 import { trigger, transition, style, animate } from '@angular/animations';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { amenity } from '../../models';
 
 @Component({
     selector: 'app-amenities',
@@ -37,7 +38,7 @@ export class AmenitiesComponent {
     }
 
     nextSlide() {
-        if (this.currentSlide + this.maxVisibleItems < this.hotels.length) {
+        if (this.currentSlide + this.maxVisibleItems < this.amenities.length) {
             this.currentSlide += 1;
         }
     }
@@ -48,7 +49,7 @@ export class AmenitiesComponent {
             transition: 'transform 0.5s ease-out',
         };
     }
-    hotels = [
+    amenities: amenity[] = [
         {
             id: '87adc381-b229-aafe-5872-8edb8ed2a0c9',
             name: 'Lake view',

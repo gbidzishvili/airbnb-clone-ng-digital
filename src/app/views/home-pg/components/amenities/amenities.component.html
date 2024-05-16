@@ -1,9 +1,23 @@
 <ul class="hotels">
-    <li *ngFor="let hotel of hotels | slice : 19">
-        <figure
-            class="card-image"
-            [innerHTML]="hotel.image | safehtml"
-        ></figure>
-        <figcaption>{{ hotel.name | textShortener : 12 }}</figcaption>
-    </li>
+    <button
+        *ngIf="currentSlide !== 0"
+        class="btn left"
+        (click)="previousSlide()"
+    >
+        <mat-icon>chevron_left</mat-icon>
+    </button>
+    <button
+        *ngIf="currentSlide !== hotels.length - 10"
+        class="btn right"
+        (click)="nextSlide()"
+    >
+        <mat-icon>chevron_right</mat-icon>
+    </button>
+
+    <div class="hotels-container" [ngStyle]="getContainerStyle()">
+        <li *ngFor="let hotel of hotels; let i = index">
+            <div class="card-image" [innerHTML]="hotel.image | safehtml"></div>
+            <div class="amenity">{{ hotel.name | textShortener : 9 }}</div>
+        </li>
+    </div>
 </ul>

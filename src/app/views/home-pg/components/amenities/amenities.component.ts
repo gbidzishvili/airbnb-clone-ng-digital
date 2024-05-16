@@ -1,12 +1,53 @@
+import { trigger, transition, style, animate } from '@angular/animations';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
     selector: 'app-amenities',
     templateUrl: './amenities.component.html',
-    styleUrl: './amenities.component.scss',
+    styleUrls: ['./amenities.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    animations: [
+        trigger('slideInOut', [
+            transition(':increment', [
+                style({ transform: 'translateX(0%)' }),
+                animate(
+                    '200ms ease-out',
+                    style({ transform: 'translateX(-80px)' })
+                ),
+            ]),
+            transition(':decrement', [
+                style({ transform: 'translateX(0%)' }),
+                animate(
+                    '200ms ease-out',
+                    style({ transform: 'translateX(80px)' })
+                ),
+            ]),
+        ]),
+    ],
 })
 export class AmenitiesComponent {
+    currentSlide = 0;
+    maxVisibleItems = 10;
+    itemWidth = 80; // in pixels
+
+    previousSlide() {
+        if (this.currentSlide > 0) {
+            this.currentSlide -= 1;
+        }
+    }
+
+    nextSlide() {
+        if (this.currentSlide + this.maxVisibleItems < this.hotels.length) {
+            this.currentSlide += 1;
+        }
+    }
+
+    getContainerStyle() {
+        return {
+            transform: `translateX(-${this.currentSlide * this.itemWidth}px)`,
+            transition: 'transform 0.5s ease-out',
+        };
+    }
     hotels = [
         {
             id: '87adc381-b229-aafe-5872-8edb8ed2a0c9',

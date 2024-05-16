@@ -1,4 +1,5 @@
 <div class="container">
+    <!-- buttons -->
     <button
         *ngIf="currentSlide !== 0"
         class="btn left"
@@ -13,6 +14,8 @@
     >
         <mat-icon>chevron_right</mat-icon>
     </button>
+
+    <!-- slider -->
     <div class="slider-container">
         <div
             *ngFor="let slide of slides; let i = index"
@@ -21,6 +24,7 @@
             <img *ngIf="currentSlide === i" [src]="slide.url" alt="" />
         </div>
     </div>
+    <!-- slider dots -->
     <div class="dotsContainer">
         <div
             class="dot"

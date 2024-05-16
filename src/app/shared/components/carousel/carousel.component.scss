@@ -37,8 +37,9 @@
     .slider-container {
         position: relative;
         width: 30rem;
-        height: 30rem;
+        height: 28rem;
         overflow: hidden;
+        border-radius: 1.5rem;
     }
 
     .slider-images-container {
@@ -48,15 +49,9 @@
         height: 100%;
     }
 
-    .slide {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-    }
-
     img {
         width: 30rem;
-        height: 30rem;
+        height: 28rem;
     }
 
     .dotsContainer {

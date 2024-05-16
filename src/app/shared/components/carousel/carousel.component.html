@@ -19,7 +19,7 @@
             *ngFor="let slide of slides; let i = index"
             [@slideInOut]="currentSlide"
         >
-            <img *ngIf="currentSlide === i" [src]="slide.image" alt="" />
+            <img *ngIf="currentSlide === i" [src]="slide.url" alt="" />
         </div>
     </div>
     <div class="dotsContainer">

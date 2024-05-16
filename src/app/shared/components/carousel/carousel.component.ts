@@ -7,6 +7,8 @@ import {
     group,
 } from '@angular/animations';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Input } from '@angular/core';
+import { Image } from '../../../views/home-pg/models';
 
 @Component({
     selector: 'app-carousel',
@@ -80,20 +82,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class CarouselComponent {
     currentSlide = 0;
-    slides = [
-        {
-            image: 'https://media.istockphoto.com/id/1160446488/photo/tbilisi-downtown-georgia-taken-in-april-2019.jpg?s=612x612&w=0&k=20&c=yybfqVCUZsy8qNWMnpmX1AjAmbuXtj5Kg5aekaeHj7M=',
-            caption: 'Slide 1',
-        },
-        {
-            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQamqpHyUPsm0VINKISOMADb-AE2RMYCA3JBWCFfequ4w&s',
-            caption: 'Slide 2',
-        },
-        {
-            image: 'https://tse1.mm.bing.net/th?id=OIP.G37tgeQqSNt7v2oPfj9ltQHaE7&pid=Api',
-            caption: 'Slide 3',
-        },
-    ];
+    @Input() slides!: Image[];
 
     goToSlide(index: number) {
         this.currentSlide = index;

@@ -4,7 +4,7 @@
     min-width: 15rem;
     max-width: 50rem;
     width: 100%;
-    border-radius: 0.5rem;
+    border-radius: 1.5rem;
     box-shadow: 0 1rem 2rem rgb(0 0 0 / 6%);
 }
 
@@ -24,10 +24,10 @@ button.submit {
 .form-footer {
     display: block;
     text-align: center;
+    a {
+        color: #ff5a5f;
+        text-decoration: underline;
+        cursor: pointer;
+    }
     /* margin-bottom: 1rem; */
-}
-.form-footer a {
-    text-decoration: underline;
-    color: blue;
-    cursor: pointer;
 }

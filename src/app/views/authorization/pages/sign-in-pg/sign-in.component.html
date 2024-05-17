@@ -1,33 +1,43 @@
 <form class="sign-in-form" [formGroup]="signInForm" (ngSubmit)="onSignIn()">
-  <div class="form-header"><h1>sign-in</h1></div>
-  <section>
-    <mat-form-field class="full-width">
-      <mat-label>email</mat-label>
-      <input formControlName="email" matInput placeholder="Enter email" />
-      <mat-error *ngIf="signInForm.get('email')?.invalid"
-        >{{ validationSrv.getControlError(signInForm, "email") }}
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <mat-label>password</mat-label>
-      <input
-        formControlName="password"
-        matInput
-        placeholder="Enter password"
-        [type]="hide ? 'password' : 'text'"
-      />
-      <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
-        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-      </button>
-      <mat-error *ngIf="signInForm.get('password')?.invalid"
-        >{{ validationSrv.getControlError(signInForm, "password") }}
-      </mat-error>
-    </mat-form-field>
-    <button type="submit" class="full-width submit" mat-raised-button>
-      Sign in
-    </button>
-  </section>
-  <div class="form-footer">
-    not a member? <a routerLink="/authorization/registration">Sign up here </a>
-  </div>
+    <div class="form-header">
+        <h1>Welcome to <span class="pink">AIRBNB</span></h1>
+    </div>
+    <section>
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>email</mat-label>
+            <input formControlName="email" matInput placeholder="Enter email" />
+            <mat-error *ngIf="signInForm.get('email')?.invalid"
+                >{{ validationSrv.getControlError(signInForm, "email") }}
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>password</mat-label>
+            <input
+                formControlName="password"
+                matInput
+                placeholder="Enter password"
+                [type]="hide ? 'password' : 'text'"
+            />
+            <button
+                type="button"
+                mat-icon-button
+                matSuffix
+                (click)="hide = !hide"
+            >
+                <mat-icon>{{
+                    hide ? "visibility_off" : "visibility"
+                }}</mat-icon>
+            </button>
+            <mat-error *ngIf="signInForm.get('password')?.invalid"
+                >{{ validationSrv.getControlError(signInForm, "password") }}
+            </mat-error>
+        </mat-form-field>
+        <button type="submit" class="full-width submit" mat-raised-button>
+            Sign in
+        </button>
+    </section>
+    <div class="form-footer">
+        not a member?
+        <a routerLink="/authorization/registration">Sign up here </a>
+    </div>
 </form>

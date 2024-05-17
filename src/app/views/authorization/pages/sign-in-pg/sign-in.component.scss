@@ -1,29 +1,33 @@
 .sign-in-form {
-  margin: 10rem auto;
-  padding: 1rem 2rem;
-  min-width: 15rem;
-  max-width: 50rem;
-  width: 100%;
-  background-color: rgb(230, 230, 230);
-  border-radius: 0.5rem;
+    margin: 10rem auto;
+    padding: 3rem 4rem;
+    min-width: 15rem;
+    max-width: 50rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    box-shadow: 0 1rem 2rem rgb(0 0 0 / 6%);
 }
 
 .full-width {
-  width: 100%;
+    width: 100%;
 }
 .form-header {
-  text-align: center;
+    text-align: center;
+    .pink {
+        color: #ff5a5f;
+        font-weight: 600;
+    }
 }
 button.submit {
-  margin-bottom: 3rem;
+    margin-bottom: 3rem;
 }
 .form-footer {
-  display: block;
-  text-align: center;
-  /* margin-bottom: 1rem; */
+    display: block;
+    text-align: center;
+    /* margin-bottom: 1rem; */
 }
-.form-footer  a {
-  text-decoration: underline;
-  color: blue;
-  cursor: pointer;
+.form-footer a {
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
 }

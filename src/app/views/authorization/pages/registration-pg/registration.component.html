@@ -8,23 +8,17 @@
     </div>
     <section>
         <mat-form-field appearance="outline" class="full-width">
-            <mat-label>name</mat-label>
-            <input formControlName="name" matInput placeholder="Enter name" />
-            <mat-error *ngIf="registerForm.get('name')?.invalid"
-                >{{ validationSrv.getControlError(registerForm, "name") }}
-            </mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="full-width">
-            <mat-label>surName</mat-label>
+            <mat-label>username</mat-label>
             <input
-                formControlName="surName"
+                formControlName="userName"
                 matInput
-                placeholder="Enter surName"
+                placeholder="Enter userName"
             />
-            <mat-error *ngIf="registerForm.get('surName')?.invalid"
-                >{{ validationSrv.getControlError(registerForm, "surName") }}
+            <mat-error *ngIf="registerForm.get('userName')?.invalid"
+                >{{ validationSrv.getControlError(registerForm, "userName") }}
             </mat-error>
         </mat-form-field>
+
         <mat-form-field appearance="outline" class="full-width">
             <mat-label>email</mat-label>
             <input formControlName="email" matInput placeholder="Enter email" />
@@ -39,6 +33,7 @@
             <input
                 formControlName="phoneNumber"
                 placeholder="#########"
+                maxlength="9"
                 (keypress)="($event.charCode >= 48 && $event.charCode < 58)"
                 type="tel"
                 matInput
@@ -50,7 +45,37 @@
                 }}
             </mat-error>
         </mat-form-field>
-
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>personal number</mat-label>
+            <input
+                formControlName="personalNumber"
+                placeholder="###########"
+                maxlength="11"
+                (keypress)="($event.charCode >= 48 && $event.charCode < 58)"
+                type="tel"
+                matInput
+            />
+            <!-- <mat-icon matSuffix>phone</mat-icon> -->
+            <mat-error *ngIf="registerForm.get('personalNumber')?.invalid"
+                >{{
+                    validationSrv.getControlError(
+                        registerForm,
+                        "personalNumber"
+                    )
+                }}
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Select an option</mat-label>
+            <mat-select formControlName="gender">
+                <mat-option *ngFor="let option of options" [value]="option">
+                    {{ option }}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="registerForm.get('gender')?.invalid"
+                >{{ validationSrv.getControlError(registerForm, "gender") }}
+            </mat-error>
+        </mat-form-field>
         <mat-form-field appearance="outline" class="full-width">
             <mat-label>password</mat-label>
             <input

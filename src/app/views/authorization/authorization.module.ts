@@ -6,18 +6,20 @@ import { SignInComponent } from './pages/sign-in-pg/sign-in.component';
 import { RegistrationComponent } from './pages/registration-pg/registration.component';
 import { MaterialModule } from '../../shared/modules/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
-  declarations: [
-    AuthorizationComponent,
-    SignInComponent,
-    RegistrationComponent,
-  ],
-  imports: [
-    CommonModule,
-    AuthorizationRoutingModule,
-    MaterialModule,
-    ReactiveFormsModule,
-  ],
+    declarations: [
+        AuthorizationComponent,
+        SignInComponent,
+        RegistrationComponent,
+    ],
+    imports: [
+        CommonModule,
+        AuthorizationRoutingModule,
+        MaterialModule,
+        ReactiveFormsModule,
+        MatSelectModule,
+    ],
 })
 export class AuthorizationModule {}

@@ -6,6 +6,9 @@ import {
     Validators,
 } from '@angular/forms';
 import { FormValidationService } from '../../services/form-validation.service';
+import { BaseProxyService } from '../../../../core/services/base-proxy.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
     selector: 'app-sign-in',
@@ -16,7 +19,12 @@ import { FormValidationService } from '../../services/form-validation.service';
 export class SignInComponent implements OnInit {
     hide = true;
     public signInForm!: FormGroup;
-    constructor(public validationSrv: FormValidationService) {}
+    constructor(
+        public validationSrv: FormValidationService,
+        public baseProxySrv: BaseProxyService,
+        public router: Router,
+        private authService: AuthService
+    ) {}
     ngOnInit(): void {
         this.signInForm = new FormGroup({
             email: new FormControl(null, [
@@ -32,7 +40,22 @@ export class SignInComponent implements OnInit {
     }
 
     onSignIn() {
-        console.log(this.signInForm);
-        console.log('user logged in');
+        this.baseProxySrv
+            .create(
+                JSON.stringify(this.signInForm.value),
+                'http://www.airbnb-digital-students.somee.com/api/User/LogIn',
+                true
+            )
+            .subscribe(
+                (response: any) => {
+                    if (response.body && response.body.jwt) {
+                        this.authService.setToken(response.body.jwt);
+                    }
+                },
+                (error) => {
+                    console.error('Login failed', error);
+                }
+            );
+        console.log('rame');
     }
 }

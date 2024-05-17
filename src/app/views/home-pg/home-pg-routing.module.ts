@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomePgComponent } from './home-pg.component';
+import { authGuard } from '../../core/guard/auth.guard';
 
-const routes: Routes = [{ path: 'home', component: HomePgComponent }];
+const routes: Routes = [
+    { path: 'home', component: HomePgComponent, canActivate: [authGuard] },
+];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule],
 })
 export class HomePgRoutingModule {}

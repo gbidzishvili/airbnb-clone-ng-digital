@@ -50,11 +50,19 @@
         </button>
         <mat-menu #menu="matMenu">
             <ng-template matMenuContent>
-                <button mat-menu-item class="menu-item-s">
+                <button
+                    mat-menu-item
+                    class="menu-item-s"
+                    (click)="navigateToRegister()"
+                >
                     <mat-icon>app_registration</mat-icon>
                     <span>Sign up</span>
                 </button>
-                <button mat-menu-item class="menu-item-s">
+                <button
+                    (click)="navigateToLogin()"
+                    mat-menu-item
+                    class="menu-item-s"
+                >
                     <mat-icon>login</mat-icon>
                     <span>log in</span>
                 </button>

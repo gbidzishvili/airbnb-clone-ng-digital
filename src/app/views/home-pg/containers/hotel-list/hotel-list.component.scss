@@ -5,10 +5,11 @@
     margin: 0 auto;
 }
 
-.hotel-list {
+ul {
     display: flex;
     list-style-type: none;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 2rem;
     margin-bottom: 3rem;
     li {

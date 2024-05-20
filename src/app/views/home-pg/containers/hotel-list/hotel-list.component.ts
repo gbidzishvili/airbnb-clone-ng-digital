@@ -18,6 +18,9 @@ export class HotelListComponent implements OnInit {
     hotels$!: Observable<Hotel[]>;
     constructor(private baseProxySrv: BaseProxyService) {}
     ngOnInit() {
+        this.initHotels();
+    }
+    initHotels() {
         this.hotels$ = this.baseProxySrv.get<Hotel[]>(
             'http://www.airbnb-digital-students.somee.com/get-all-hotels'
         );

@@ -54,6 +54,8 @@
             gap: 1rem;
             min-width: 8rem;
             height: 7rem;
+
+            padding: 0.5rem 0;
             .amenity {
                 font-size: 1.2rem;
             }
@@ -62,4 +64,8 @@
 }
 .hide {
     display: none;
+}
+.active {
+    background: #ff5a5f17;
+    // border-radius: 0rem 1rem;
 }

@@ -15,7 +15,11 @@
     </button>
 
     <div class="hotels-container" [ngStyle]="getContainerStyle()">
-        <li *ngFor="let amenity of amenities; let i = index">
+        <li
+            (click)="filterByAmenity(amenity, i)"
+            [ngClass]="{ active: selectedAmenities[i] !== undefined }"
+            *ngFor="let amenity of amenities; let i = index"
+        >
             <div
                 class="card-image"
                 [innerHTML]="amenity.image | safehtml"

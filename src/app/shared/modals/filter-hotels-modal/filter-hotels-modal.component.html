@@ -1,55 +1,5 @@
 <div class="container">
-    <div class="price-range">
-        <div class="header">Price range</div>
-        <div class="sub-header">Nightly prices before fees and taxes</div>
-        <form [formGroup]="sliderForm" class="slider-form">
-            <mat-slider color="accent" min="0" max="500">
-                <input
-                    (input)="
-                        onUpdateSlider(
-                            'numberLow',
-                            sliderForm.get('sliderLow')?.value
-                        )
-                    "
-                    formControlName="sliderLow"
-                    matSliderStartThumb
-                />
-                <input
-                    (input)="
-                        onUpdateSlider(
-                            'numberHigh',
-                            sliderForm.get('sliderHigh')?.value
-                        )
-                    "
-                    formControlName="sliderHigh"
-                    matSliderEndThumb
-                />
-            </mat-slider>
-            <div class="inputs">
-                <input
-                    (input)="
-                        onUpdateSlider(
-                            'sliderLow',
-                            sliderForm.get('numberLow')?.value
-                        )
-                    "
-                    formControlName="numberLow"
-                    type="text"
-                />
-                <input
-                    (input)="
-                        onUpdateSlider(
-                            'sliderHigh',
-                            sliderForm.get('numberHigh')?.value
-                        )
-                    "
-                    formControlName="numberHigh"
-                    type="number"
-                />
-            </div>
-            <button (click)="onclick()">sdf</button>
-        </form>
-    </div>
+    <app-price-range></app-price-range>
     <hr />
     <div class="type-of-places">
         <div class="header">Type of place</div>
@@ -62,7 +12,7 @@
         </mat-list>
     </div>
     <hr />
-    <div class="rooms-and-beds flex-column">
+    <!-- <div class="rooms-and-beds flex-column">
         <div class="header">Rooms and beds</div>
         <div class="beds">
             <div>Beds</div>
@@ -79,7 +29,7 @@
             <button>3+</button>
         </div>
     </div>
-    <hr />
+    <hr /> -->
     <div class="property-type">
         <div class="header">Property type</div>
         <div class="property-type-list">
@@ -108,12 +58,12 @@
         </div>
     </div>
     <hr />
-    <div class="host-language">
+    <!-- <div class="host-language">
         <div class="header">Host language</div>
         <div class="host-language-list">
             <mat-checkbox class="example-margin">English</mat-checkbox>
             <mat-checkbox class="example-margin">Georgian</mat-checkbox>
         </div>
     </div>
-    <hr />
+    <hr /> -->
 </div>

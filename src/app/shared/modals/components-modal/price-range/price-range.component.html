@@ -1,0 +1,65 @@
+<div class="price-range">
+    <div class="header">Price range</div>
+    <div class="sub-header">Nightly prices before fees and taxes</div>
+    <form [formGroup]="sliderForm" class="slider-form">
+        <mat-slider class="slider" color="accent" min="0" max="500">
+            <input
+                type="number"
+                (input)="
+                    onUpdateSlider(
+                        'numberLow',
+                        sliderForm.get('sliderLow')?.value
+                    )
+                "
+                formControlName="sliderLow"
+                matSliderStartThumb
+            />
+            <input
+                type="number"
+                (input)="
+                    onUpdateSlider(
+                        'numberHigh',
+                        sliderForm.get('sliderHigh')?.value
+                    )
+                "
+                formControlName="sliderHigh"
+                matSliderEndThumb
+            />
+        </mat-slider>
+        <div class="inputs">
+            <mat-form-field appearance="outline" class="width-40">
+                <mat-label>Range min</mat-label>
+                <input
+                    matInput
+                    placeholder="Ex. Pizza"
+                    value="Sushi"
+                    (input)="
+                        onUpdateSlider(
+                            'sliderLow',
+                            sliderForm.get('numberLow')?.value
+                        )
+                    "
+                    formControlName="numberLow"
+                    type="text"
+                />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="width-40">
+                <mat-label>Range max</mat-label>
+                <input
+                    matInput
+                    placeholder="Ex. Pizza"
+                    value="Sushi"
+                    (input)="
+                        onUpdateSlider(
+                            'sliderHigh',
+                            sliderForm.get('numberHigh')?.value
+                        )
+                    "
+                    formControlName="numberHigh"
+                    type="number"
+                />
+            </mat-form-field>
+        </div>
+        <button class="price-range-btn" (click)="onclick()">sdf</button>
+    </form>
+</div>

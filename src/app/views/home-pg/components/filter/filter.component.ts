@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { FilterHotelsModalComponent } from '../../../../shared/components/modals/filter-hotels-modal/filter-hotels-modal.component';
+import { FilterHotelsModalComponent } from '../../../../shared/modals/filter-hotels-modal/filter-hotels-modal.component';
 
 @Component({
     selector: 'app-filter',
@@ -10,7 +10,7 @@ import { FilterHotelsModalComponent } from '../../../../shared/components/modals
 export class FilterComponent implements OnInit {
     constructor(public dialog: MatDialog) {}
     ngOnInit(): void {
-        this.dialog.open(FilterHotelsModalComponent);
+        // this.dialog.open(FilterHotelsModalComponent);
     }
 
     openFilterModal() {

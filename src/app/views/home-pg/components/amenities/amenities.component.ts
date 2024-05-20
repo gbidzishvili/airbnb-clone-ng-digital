@@ -30,7 +30,7 @@ export class AmenitiesComponent {
     currentSlide = 0;
     maxVisibleItems = 10;
     itemWidth = 80; // in pixels
-
+    selectedAmenities: any = [];
     previousSlide() {
         if (this.currentSlide > 0) {
             this.currentSlide -= 1;
@@ -48,6 +48,10 @@ export class AmenitiesComponent {
             transform: `translateX(-${this.currentSlide * this.itemWidth}px)`,
             transition: 'transform 0.5s ease-out',
         };
+    }
+    filterByAmenity(amenity: amenity, i: number) {
+        this.selectedAmenities[i] = amenity;
+        console.log(this.selectedAmenities);
     }
     amenities: amenity[] = [
         {

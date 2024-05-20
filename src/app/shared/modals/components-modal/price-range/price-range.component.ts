@@ -1,18 +1,16 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-
 @Component({
-    selector: 'app-filter-hotels-modal',
-    templateUrl: './filter-hotels-modal.component.html',
-    styleUrl: './filter-hotels-modal.component.scss',
+    selector: 'app-price-range',
+    templateUrl: './price-range.component.html',
+    styleUrl: './price-range.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FilterHotelsModalComponent {
-    red = 'red';
+export class PriceRangeComponent {
     sliderForm!: FormGroup;
     ngOnInit() {
         this.sliderForm = new FormGroup({
-            sliderLow: new FormControl(0),
+            sliderLow: new FormControl(),
             sliderHigh: new FormControl(500),
             numberLow: new FormControl(0),
             numberHigh: new FormControl(500),

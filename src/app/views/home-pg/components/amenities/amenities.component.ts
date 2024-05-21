@@ -2,7 +2,9 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { amenity } from '../../models';
 import { BaseProxyService } from '../../../../core/services/base-proxy.service';
-import { Observable } from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { FetchHotelsService } from '../../services/fetch-hotels.service';
 
 @Component({
     selector: 'app-amenities',
@@ -34,7 +36,11 @@ export class AmenitiesComponent implements OnInit {
     itemWidth = 80; // in pixels
     selectedAmenities: any = [];
     amenities$!: Observable<amenity[]>;
-    constructor(private baseProxySrv: BaseProxyService) {}
+    constructor(
+        private baseProxySrv: BaseProxyService,
+        private http: HttpClient,
+        private fetchHotelsSrv: FetchHotelsService
+    ) {}
     ngOnInit(): void {
         this.amenities$ = this.baseProxySrv.get<amenity[]>(
             'http://www.airbnb-digital-students.somee.com/getall'
@@ -42,13 +48,13 @@ export class AmenitiesComponent implements OnInit {
     }
     previousSlide() {
         // if (this.currentSlide > 0) {
-            this.currentSlide -= 1;
+        this.currentSlide -= 1;
         // }
     }
 
     nextSlide() {
         // if (this.currentSlide + this.maxVisibleItems < this.amenities$.length) {
-            this.currentSlide += 1;
+        this.currentSlide += 1;
         // }
     }
 
@@ -59,8 +65,23 @@ export class AmenitiesComponent implements OnInit {
         };
     }
     filterByAmenity(amenity: amenity, i: number) {
-        this.selectedAmenities[i] = amenity;
-        console.log(this.selectedAmenities);
+        if (this.selectedAmenities[i]) {
+            this.selectedAmenities[i] = '';
+        } else {
+            this.selectedAmenities[i] = {
+                amenities: amenity.name.split(' ').join('%20'),
+            };
+        }
+        let url =
+            'http://www.airbnb-digital-students.somee.com/api/Apartments/filter';
+        this.fetchHotelsSrv.fetchHotels(url, this.selectedAmenities);
+        console.log('amenities fetchservice');
+        // .pipe(
+        //     catchError((error) => {
+        //         alert('An error occurred: ' + error.message);
+        //         return of([]); // Return an empty array on error to maintain the Observable flow
+        //     })
+        // );
     }
     // amenities: amenity[] = [
     //     {

@@ -1,34 +1,33 @@
 <ul class="hotels">
     <ng-container *ngIf="amenities$ | async as amenities">
-    <div class="hotels-container" [ngStyle]="getContainerStyle()">
-        <li
-            (click)="filterByAmenity(amenity, i)"
-            [ngClass]="{ active: selectedAmenities[i] !== undefined }"
-            *ngFor="
-                let amenity of amenities;
-                let i = index
-            "
+        <div class="hotels-container" [ngStyle]="getContainerStyle()">
+            <li
+                (click)="filterByAmenity(amenity, i)"
+                [ngClass]="{ active: selectedAmenities[i] }"
+                *ngFor="let amenity of amenities; let i = index"
+            >
+                <div
+                    class="card-image"
+                    [innerHTML]="amenity.image | safehtml"
+                ></div>
+                <div class="amenity">
+                    {{ amenity.name | textShortener : 9 }}
+                </div>
+            </li>
+        </div>
+        <button
+            *ngIf="currentSlide !== 0"
+            class="btn left"
+            (click)="previousSlide()"
         >
-            <div
-                class="card-image"
-                [innerHTML]="amenity.image | safehtml"
-            ></div>
-            <div class="amenity">{{ amenity.name | textShortener : 9 }}</div>
-        </li>
-    </div>
-       <button
-        *ngIf="currentSlide !== 0"
-        class="btn left"
-        (click)="previousSlide()"
-    >
-        <mat-icon>chevron_left</mat-icon>
-    </button>
-    <button
-        *ngIf="currentSlide !== amenities.length - 10"
-        class="btn right"
-        (click)="nextSlide()"
-    >
-        <mat-icon>chevron_right</mat-icon>
-    </button>
+            <mat-icon>chevron_left</mat-icon>
+        </button>
+        <button
+            *ngIf="currentSlide !== amenities.length - 10"
+            class="btn right"
+            (click)="nextSlide()"
+        >
+            <mat-icon>chevron_right</mat-icon>
+        </button>
     </ng-container>
 </ul>

@@ -7,12 +7,8 @@ import { FilterHotelsModalComponent } from '../../../../shared/modals/filter-hot
     templateUrl: './filter.component.html',
     styleUrl: './filter.component.scss',
 })
-export class FilterComponent implements OnInit {
+export class FilterComponent {
     constructor(public dialog: MatDialog) {}
-    ngOnInit(): void {
-        // this.dialog.open(FilterHotelsModalComponent);
-    }
-
     openFilterModal() {
         const dialogRef = this.dialog.open(FilterHotelsModalComponent);
 

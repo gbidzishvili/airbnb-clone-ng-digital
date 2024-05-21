@@ -9,6 +9,7 @@ import { FormValidationService } from '../../services/form-validation.service';
 import { BaseProxyService } from '../../../../core/services/base-proxy.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-sign-in',
@@ -48,11 +49,14 @@ export class SignInComponent implements OnInit {
             )
             .subscribe(
                 (response: any) => {
+                    console.log(response);
                     if (response.body && response.body.jwt) {
                         this.authService.setToken(response.body.jwt);
+                        this.router.navigate(['/home']);
                     }
                 },
                 (error) => {
+                    alert('Login Failed!');
                     console.error('Login failed', error);
                 }
             );

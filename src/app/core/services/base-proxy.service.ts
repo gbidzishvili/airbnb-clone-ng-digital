@@ -109,13 +109,15 @@ export class BaseProxyService {
         if (filters) {
             let params = '?';
             for (let key in filters) {
-                let value = filters[key as keyof typeof filters];
-                if (Array.isArray(value)) {
-                    for (let index = 0; index < value.length; index++) {
-                        params += `${key}=${value[index]}&`;
+                let filtersValue = filters[key as keyof typeof filters];
+                if (Array.isArray(filtersValue)) {
+                    for (let index = 0; index < filtersValue.length; index++) {
+                        params += `${key}=${filtersValue[index]}&`;
                     }
                 } else {
-                    params += `${key}=${value}&`;
+                    for (const [key, value] of Object.entries(filtersValue)) {
+                        params += `${key}=${value}&`;
+                    }
                 }
             }
             return params.slice(0, params.length - 1);

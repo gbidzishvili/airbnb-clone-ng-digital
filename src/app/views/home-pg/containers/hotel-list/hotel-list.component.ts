@@ -6,7 +6,8 @@ import {
 } from '@angular/core';
 import { BaseProxyService } from '../../../../core/services/base-proxy.service';
 import { Hotel } from '../../models/hotel.model';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { FetchHotelsService } from '../../services/fetch-hotels.service';
 @Component({
     selector: 'app-hotel-list',
     templateUrl: './hotel-list.component.html',
@@ -15,15 +16,25 @@ import { Observable } from 'rxjs';
 })
 export class HotelListComponent implements OnInit {
     @Input() title: string = '';
-    hotels$!: Observable<Hotel[]>;
-    constructor(private baseProxySrv: BaseProxyService) {}
+    // private hotelsSubject = new BehaviorSubject<any>([]);
+    // hotels$ = this.hotelsSubject.asObservable();
+    constructor(
+        private baseProxySrv: BaseProxyService,
+        public fetchHotelsSrv: FetchHotelsService
+    ) {}
     ngOnInit() {
         this.initHotels();
     }
     initHotels() {
-        this.hotels$ = this.baseProxySrv.get<Hotel[]>(
-            'http://www.airbnb-digital-students.somee.com/get-all-hotels'
-        );
+        this.fetchHotelsSrv
+            .fetchHotels(
+                'http://www.airbnb-digital-students.somee.com/get-all-hotels'
+            )
+            // .subscribe((hotels: Hotel[]) => {
+            //     this.hotelsSubject.next(hotels);
+            //     console.log(hotels);
+            // });
+        // this.hotels$ = this.fetchHotelsSrv.hotels$;
     }
     // hotels = [
     //     {

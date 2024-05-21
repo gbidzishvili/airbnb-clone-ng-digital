@@ -16,6 +16,7 @@ import { HomePgRoutingModule } from './home-pg-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedComponentsModule } from '../../shared/components/shared-components.module';
 import { FiltersContainerComponent } from './containers/filters-container/filters-container.component';
+import { FetchHotelsService } from './services/fetch-hotels.service';
 @NgModule({
     declarations: [
         HomePgComponent,
@@ -37,5 +38,6 @@ import { FiltersContainerComponent } from './containers/filters-container/filter
         HttpClientModule,
         SharedComponentsModule,
     ],
+    providers: [FetchHotelsService],
 })
 export class HomePgModule {}

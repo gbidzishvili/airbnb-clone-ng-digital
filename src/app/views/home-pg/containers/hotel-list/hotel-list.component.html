@@ -1,7 +1,14 @@
 <section class="trending-stays">
     <ul class="hotel-list">
-        <li *ngFor="let hotel of hotels$ | async">
-            <app-hotel [hotelInfo]="hotel"></app-hotel>
-        </li>
+        <div *ngIf="fetchHotelsSrv.hotels$ | async as hotelArr">
+            <div *ngIf="hotelArr.length === 0; else hotels">
+                <h1>No hotels found matching the criteria!</h1>
+            </div>
+            <ng-template #hotels>
+                <li *ngFor="let hotel of hotelArr">
+                    <app-hotel [hotelInfo]="hotel"></app-hotel>
+                </li>
+            </ng-template>
+        </div>
     </ul>
 </section>

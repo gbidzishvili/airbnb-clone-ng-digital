@@ -3,6 +3,7 @@
 //   HttpHandler,
 //   HttpInterceptor,
 //   HttpRequest,
+//   HttpResponse,
 // } from '@angular/common/http';
 // import { Injectable } from '@angular/core';
 // import { Observable, tap } from 'rxjs';
@@ -18,7 +19,7 @@
 //   ): Observable<HttpEvent<any>> {
 //     return next.handle(req).pipe(
 //       tap((evt) => {
-//         if (evt instanceof HttpREsponse) {
+//         if (evt instanceof HttpResponse) {
 //           if (
 //             evt.ok &&
 //             this.successNotification.checkHttpRequestType(req.method)

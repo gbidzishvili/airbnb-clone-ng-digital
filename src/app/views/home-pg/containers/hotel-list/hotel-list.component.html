@@ -1,6 +1,9 @@
 <section class="trending-stays">
-    <ul class="hotel-list">
-        <div *ngIf="fetchHotelsSrv.hotels$ | async as hotelArr">
+    <ul>
+        <div
+            class="hotel-list"
+            *ngIf="fetchHotelsSrv.hotels$ | async as hotelArr"
+        >
             <div *ngIf="hotelArr.length === 0; else hotels">
                 <h1>No hotels found matching the criteria!</h1>
             </div>

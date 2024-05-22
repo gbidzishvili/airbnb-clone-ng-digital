@@ -5,6 +5,7 @@ import {
     Observable,
     Subscription,
     catchError,
+    map,
     of,
 } from 'rxjs';
 import { Hotel } from '../models/hotel.model';
@@ -21,8 +22,12 @@ export class FetchHotelsService implements OnDestroy {
         this.fetchSub = this.baseproxySrv
             .get<Hotel[]>(url, filters)
             .pipe(catchError((err: Error) => of([])))
-            .subscribe((hotels: Hotel[]) => this.hotelsSubject.next(hotels));
+            .subscribe((hotels: Hotel[]) => {
+                console.log(hotels);
+                this.hotelsSubject.next(hotels);
+            });
     }
+
     ngOnDestroy(): void {
         this.fetchSub.unsubscribe();
     }

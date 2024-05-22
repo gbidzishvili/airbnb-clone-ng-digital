@@ -10,7 +10,7 @@ export class PriceRangeComponent {
     sliderForm!: FormGroup;
     ngOnInit() {
         this.sliderForm = new FormGroup({
-            sliderLow: new FormControl(),
+            sliderLow: new FormControl(0),
             sliderHigh: new FormControl(500),
             numberLow: new FormControl(0),
             numberHigh: new FormControl(500),

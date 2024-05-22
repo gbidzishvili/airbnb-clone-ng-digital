@@ -9,7 +9,6 @@ import { FormValidationService } from '../../services/form-validation.service';
 import { BaseProxyService } from '../../../../core/services/base-proxy.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-sign-in',

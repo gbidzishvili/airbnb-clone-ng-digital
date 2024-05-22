@@ -1,0 +1,16 @@
+<div class="amenities">
+    <div class="header">Amenities</div>
+    <div class="amenities-list">
+        <div class="amenities-grid">
+            <mat-checkbox
+                *ngFor="
+                    let amenity of fetchAmenities.amenities$
+                        | async
+                        | slice : 0 : 9
+                "
+                class="example-margin"
+                >{{ amenity.name }}</mat-checkbox
+            >
+        </div>
+    </div>
+</div>

@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
-import { CanActivateFn } from '@angular/router';
+import { CanDeactivateFn } from '@angular/router';
 
 import { logoutGuard } from './logout.guard';
 
 describe('logoutGuard', () => {
-  const executeGuard: CanActivateFn = (...guardParameters) => 
+  const executeGuard: CanDeactivateFn = (...guardParameters) => 
       TestBed.runInInjectionContext(() => logoutGuard(...guardParameters));
 
   beforeEach(() => {

@@ -16,6 +16,7 @@ import { FetchHotelsService } from '../../services/fetch-hotels.service';
 })
 export class HotelListComponent implements OnInit {
     @Input() title: string = '';
+    ErrorMessage!: string;
     constructor(public fetchHotelsSrv: FetchHotelsService) {}
     ngOnInit() {
         this.initHotels();
@@ -24,5 +25,6 @@ export class HotelListComponent implements OnInit {
         this.fetchHotelsSrv.fetchHotels(
             'http://www.airbnb-digital-students.somee.com/get-all-hotels'
         );
+        this.ErrorMessage = 'No hotels found matching the criteria!';
     }
 }

@@ -14,6 +14,7 @@ export class FetchHotelsService implements OnDestroy {
     private hotelsSubject = new BehaviorSubject<Hotel[]>([]);
     hotels$ = this.hotelsSubject.asObservable();
     fetchSub = new Subscription();
+
     constructor(private baseproxySrv: BaseProxyService) {}
 
     fetchHotels(url: string, filters: any = ''): any {

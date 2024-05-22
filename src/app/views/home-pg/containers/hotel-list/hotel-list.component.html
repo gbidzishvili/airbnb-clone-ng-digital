@@ -5,7 +5,7 @@
             *ngIf="fetchHotelsSrv.hotels$ | async as hotelArr"
         >
             <div *ngIf="hotelArr.length === 0; else hotels">
-                <h1>No hotels found matching the criteria!</h1>
+                <h1>{{ ErrorMessage }}</h1>
             </div>
             <ng-template #hotels>
                 <li *ngFor="let hotel of hotelArr">

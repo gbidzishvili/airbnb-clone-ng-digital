@@ -1,5 +1,12 @@
-import { CanActivateFn } from '@angular/router';
+import { CanDeactivateFn } from '@angular/router';
+import { of } from 'rxjs';
 
-export const logoutGuard: CanActivateFn = (route, state) => {
-  return true;
+export const logoutGuard: CanDeactivateFn<unknown> = (
+    component,
+    currentRoute,
+    currentState,
+    nextState
+) => {
+    const confirmDeactivate = window.confirm('Do you want to discard changes?');
+    return of(confirmDeactivate);
 };

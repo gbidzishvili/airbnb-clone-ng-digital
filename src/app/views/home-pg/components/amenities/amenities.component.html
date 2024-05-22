@@ -1,5 +1,5 @@
 <ul class="hotels">
-    <ng-container *ngIf="amenities$ | async as amenities">
+    <ng-container *ngIf="fetchAmenities.amenities$ | async as amenities">
         <div class="hotels-container" [ngStyle]="getContainerStyle()">
             <li
                 (click)="filterByAmenity(amenity, i)"

@@ -4,6 +4,7 @@ import { amenity } from '../../models';
 import { BaseProxyService } from '../../../../core/services/base-proxy.service';
 import { Observable } from 'rxjs';
 import { FetchHotelsService } from '../../services/fetch-hotels.service';
+import { FetchAmenitiesService } from '../../services/fetch-amenities.service';
 
 @Component({
     selector: 'app-amenities',
@@ -34,13 +35,17 @@ export class AmenitiesComponent implements OnInit {
     maxVisibleItems = 10;
     itemWidth = 80; // in pixels
     selectedAmenities: any = [];
-    amenities$!: Observable<amenity[]>;
+    // amenities$!: Observable<amenity[]>;
     constructor(
-        private baseProxySrv: BaseProxyService,
-        private fetchHotelsSrv: FetchHotelsService
+        public fetchAmenities: FetchAmenitiesService,
+        private fetchHotelsSrv: FetchHotelsService,
+        public baseProxySrv: BaseProxyService
     ) {}
     ngOnInit(): void {
-        this.amenities$ = this.baseProxySrv.get<amenity[]>(
+        this.initAmenities();
+    }
+    initAmenities() {
+        this.fetchAmenities.fetchAmenities(
             'http://www.airbnb-digital-students.somee.com/getall'
         );
     }

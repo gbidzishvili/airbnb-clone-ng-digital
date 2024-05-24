@@ -15,5 +15,6 @@ mat-form-field.full-width {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 1rem;
+        margin-bottom: 1rem;
     }
 }

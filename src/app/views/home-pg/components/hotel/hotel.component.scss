@@ -1,5 +1,4 @@
 .hotel-card {
-    cursor: pointer;
     &-image-container {
         position: relative;
         .carousel {
@@ -7,44 +6,6 @@
             position: relative;
             overflow: hidden;
             width: 100%;
-        }
-
-        .carousel-control-prev,
-        .carousel-control-next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            border: none;
-            color: white;
-            padding: 10px;
-            cursor: pointer;
-        }
-
-        .carousel-control-prev {
-            left: 10px;
-        }
-
-        .carousel-control-next {
-            right: 10px;
-        }
-        img {
-            border-radius: 0.8rem;
-            max-width: 29rem;
-            height: 29rem;
-            object-fit: cover;
-        }
-        .active {
-            transform: translate(0%);
-        }
-        .favorite {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            padding: 0.3rem 1rem;
-            background-color: #fff;
-            border-radius: 5rem;
-            font-weight: 500;
         }
     }
     &-info-container {
@@ -73,9 +34,4 @@
             grid-column: 1/-1;
         }
     }
-}
-.carousel-container {
-    width: 70vw;
-    height: 80vh;
-    margin: 16px auto;
 }

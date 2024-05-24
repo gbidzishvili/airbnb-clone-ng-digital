@@ -4,7 +4,6 @@
     <form [formGroup]="sliderForm" class="slider-form">
         <mat-slider class="slider" color="accent" min="0" max="500">
             <input
-                type="number"
                 (input)="
                     onUpdateSlider(
                         'numberLow',
@@ -15,7 +14,6 @@
                 matSliderStartThumb
             />
             <input
-                type="number"
                 (input)="
                     onUpdateSlider(
                         'numberHigh',
@@ -30,6 +28,8 @@
             <mat-form-field appearance="outline" class="width-40">
                 <mat-label>Range min</mat-label>
                 <input
+                    onfocus="this.value=''"
+                    type="number"
                     matInput
                     (input)="
                         onUpdateSlider(
@@ -38,12 +38,13 @@
                         )
                     "
                     formControlName="numberLow"
-                    type="text"
                 />
             </mat-form-field>
             <mat-form-field appearance="outline" class="width-40">
                 <mat-label>Range max</mat-label>
                 <input
+                    onfocus="this.value=''"
+                    type="number"
                     matInput
                     (input)="
                         onUpdateSlider(
@@ -52,7 +53,6 @@
                         )
                     "
                     formControlName="numberHigh"
-                    type="number"
                 />
             </mat-form-field>
         </div>

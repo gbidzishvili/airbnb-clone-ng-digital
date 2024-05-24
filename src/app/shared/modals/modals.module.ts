@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ChooseCityComponent } from './components-modal/choose-city/choose-city.component';
 import { MinRatingComponent } from './components-modal/min-rating/min-rating.component';
 import { ChooseAmenitiesComponent } from './components-modal/choose-amenities/choose-amenities.component';
+import { FilterFooterComponent } from './components-modal/filter-footer/filter-footer.component';
 
 @NgModule({
     declarations: [
@@ -19,6 +20,7 @@ import { ChooseAmenitiesComponent } from './components-modal/choose-amenities/ch
         ChooseCityComponent,
         MinRatingComponent,
         ChooseAmenitiesComponent,
+        FilterFooterComponent,
     ],
     imports: [
         CommonModule,

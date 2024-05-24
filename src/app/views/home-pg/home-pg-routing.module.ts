@@ -5,7 +5,7 @@ import { authGuard } from '../../core/guard/auth.guard';
 import { logoutGuard } from '../../core/guard/logout.guard';
 
 const routes: Routes = [
-    { path: 'home', component: HomePgComponent, canActivate: [authGuard],canDeactivate: [logoutGuard] },
+    { path: 'home', component: HomePgComponent, canActivate: [authGuard] },
 ];
 
 @NgModule({

@@ -10,7 +10,7 @@ import { FilterHotelsModalComponent } from '../../../../shared/modals/filter-hot
 export class FilterComponent implements OnInit {
     constructor(public dialog: MatDialog) {}
     ngOnInit(): void {
-        const dialogRef = this.dialog.open(FilterHotelsModalComponent);
+        // const dialogRef = this.dialog.open(FilterHotelsModalComponent);
     }
     openFilterModal() {
         const dialogRef = this.dialog.open(FilterHotelsModalComponent);

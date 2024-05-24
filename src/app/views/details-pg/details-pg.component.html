@@ -1,24 +1,35 @@
-<div class="container">
-    <div class="carousel-container">
-        <app-carousel [slides]="slides"></app-carousel>
-    </div>
-    <div class="info">
-        <div class="header">Entire villa in Kiotari,Rhodes, Greece</div>
-        <div class="info-details">
-            <mat-list-item>3 guests</mat-list-item>
-            <mat-list-item>1 bedroom</mat-list-item>
-            <mat-list-item>2 beds</mat-list-item>
-            <mat-list-item>1 bath</mat-list-item>
+<div class="container" *ngIf="hotel$ | async as hotel">
+    <h1 class="title">
+        {{ hotel.name.split(" ").slice(0, -1).join(" ") }}
+        <span class="pink">{{
+            hotel.name.split(" ")[hotel.name.split(" ").length - 1]
+        }}</span>
+    </h1>
+    <div class="container-images">
+        <img class="banner-image" [src]="hotel.images[0].url" alt="" />
+
+        <div class="carousel" *ngIf="hotel.rooms[0]">
+            <app-carousel [slides]="hotel.rooms[0].roomImages"></app-carousel>
         </div>
-        <div class="hotel-stars">
-            <mat-icon>star</mat-icon><span> 5.0 (262)</span>
+        <div class="carousel" *ngIf="hotel.rooms[1]">
+            <app-carousel [slides]="hotel.rooms[1].roomImages"></app-carousel>
         </div>
-        <div class="description">
-            Terra D’oro villas are located in the unspoiled part of south Rhodes
-            and offer stunning views towards the Aegean sea and surrounding
-            hills. We offer a peaceful area for a comfortable stay. The space
-            Luxury has been balanced with simplicity and modern design. Olive
-            and lemon
+        <div class="info">
+            <div class="header">
+                {{ hotel.description }}{{ hotel.address.city }},{{
+                    hotel.address.country
+                }}
+            </div>
+            <div class="info-details">
+                <mat-list-item>3 guests</mat-list-item>
+                <mat-list-item>1 bedroom</mat-list-item>
+                <mat-list-item>2 beds</mat-list-item>
+                <mat-list-item>1 bath</mat-list-item>
+            </div>
+            <div class="hotel-stars">
+                <mat-icon>star</mat-icon><span> 5.0 (262)</span>
+            </div>
+            <div class="description"></div>
         </div>
     </div>
     <div style="display: flex; justify-content: center; width: 100%">

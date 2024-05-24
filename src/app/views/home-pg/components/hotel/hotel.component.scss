@@ -1,12 +1,12 @@
 .hotel-card {
     &-image-container {
         position: relative;
-        .carousel {
-            display: flex;
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-        }
+        // .carousel {
+        //     display: flex;
+        //     position: relative;
+        //     overflow: hidden;
+        //     width: 100%;
+        // }
     }
     &-info-container {
         display: grid;

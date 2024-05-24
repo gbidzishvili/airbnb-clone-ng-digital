@@ -46,7 +46,7 @@ export class BaseProxyService {
         apiUrl: string,
         additionalRouteName: any = undefined
     ): Observable<T> {
-        var fullUrl = `${apiUrl}/${id}${
+        var fullUrl = `${apiUrl}/?id=${id}${
             additionalRouteName != undefined ? `/${additionalRouteName}` : ``
         }`;
         return this.http.get<T>(fullUrl).pipe<T>(retry(1)) as Observable<T>;

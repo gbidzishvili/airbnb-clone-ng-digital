@@ -4,7 +4,7 @@ import { DetailsPgComponent } from './details-pg.component';
 
 const routes: Routes = [
     {
-        path: 'details',
+        path: 'details/:id',
         component: DetailsPgComponent,
     },
 ];

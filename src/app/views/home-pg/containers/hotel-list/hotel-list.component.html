@@ -1,9 +1,6 @@
 <section class="trending-stays">
     <ul>
-        <div
-            class="hotel-list"
-            *ngIf="fetchHotelsSrv.hotels$ | async as hotelArr"
-        >
+        <div class="hotel-list" *ngIf="hotels$ | async as hotelArr">
             <div *ngIf="hotelArr.length === 0; else hotels">
                 <h1>{{ ErrorMessage }}</h1>
             </div>

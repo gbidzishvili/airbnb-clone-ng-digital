@@ -4,15 +4,15 @@ import { DetailsPgRoutingModule } from './details-pg-routing.module';
 import { MatListModule } from '@angular/material/list';
 import { DetailsPgComponent } from './details-pg.component';
 import { MatIconModule } from '@angular/material/icon';
-import { CarouselComponent } from './components/carousel/carousel.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { CalculatorComponent } from './components/calculator/calculator.component';
+import { SharedComponentsModule } from '../../shared/components/shared-components.module';
 @NgModule({
-    declarations: [DetailsPgComponent, CarouselComponent, CalculatorComponent],
+    declarations: [DetailsPgComponent, CalculatorComponent],
     imports: [
         CommonModule,
         DetailsPgRoutingModule,
@@ -23,7 +23,7 @@ import { CalculatorComponent } from './components/calculator/calculator.componen
         MatInputModule,
         MatFormFieldModule,
         ReactiveFormsModule,
-
+        SharedComponentsModule,
         FormsModule,
     ],
 })

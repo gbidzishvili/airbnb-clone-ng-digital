@@ -19,6 +19,7 @@ export const logoutGuard: CanDeactivateFn<unknown> = (
         nextState.url === '/authorization/sign-in' ||
         nextState.url === '/authorization/registration'
     ) {
+        alert('rame');
         return confirm('are u sure?');
     }
     // const confirmDeactivate = window.confirm('Do you want to discard changes?');

@@ -1,4 +1,5 @@
 import {
+    AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
@@ -10,6 +11,11 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { DateRange } from '@angular/material/datepicker';
 import { Loader } from '@googlemaps/js-api-loader';
+import { FetchHotelsService } from '../home-pg/services/fetch-hotels.service';
+import { BaseProxyService } from '../../core/services/base-proxy.service';
+import { Observable } from 'rxjs';
+import { Hotel } from '../home-pg/models/hotel.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-details-pg',
@@ -18,31 +24,36 @@ import { Loader } from '@googlemaps/js-api-loader';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [provideNativeDateAdapter()],
 })
-export class DetailsPgComponent implements OnInit {
+export class DetailsPgComponent implements OnInit, AfterViewInit {
     @Input() nights!: number;
     selectedRangeValue: DateRange<Date> | undefined;
     @Output() selectedRangeValueChange = new EventEmitter<DateRange<Date>>();
+    hotel$!: Observable<Hotel>;
     datesForm = new FormGroup({
         startDate: new FormControl<Date | null>(null),
         endDate: new FormControl<Date | null>(null),
     });
-    slides = [
-        {
-            src: 'https://a0.muscache.com/im/pictures/8be48753-223a-46d3-977d-d3c97d0774a4.jpg?im_w=1200',
 
-            alt: 'hotel-image',
-        },
-        {
-            src: 'https://a0.muscache.com/im/pictures/6bd13134-e0cd-4911-b195-fad24f68f843.jpg?im_w=1200',
+    constructor(
+        public baseProxySrv: BaseProxyService,
+        public route: ActivatedRoute
+    ) {}
 
-            alt: 'hotel-image',
-        },
-        {
-            src: 'https://a0.muscache.com/im/pictures/00404d70-0064-48e4-84de-f16f45820f80.jpg?im_w=1200',
-            alt: 'hotel-image',
-        },
-    ];
     ngOnInit(): void {
+        this.route.paramMap.subscribe((v: any) => {
+            this.hotel$ = this.baseProxySrv.getById(
+                v['params']['id'],
+                'http://www.airbnb-digital-students.somee.com/get-by-id'
+            );
+            this.baseProxySrv
+                .getById(
+                    v['params']['id'],
+                    'http://www.airbnb-digital-students.somee.com/get-by-id'
+                )
+                .subscribe((v) => console.log(v));
+        });
+    }
+    ngAfterViewInit() {
         const loader = new Loader({
             apiKey: 'AIzaSyAYpfjjDa8iY-FI-Mc3b8YM4iUS60We7pQ',
             version: 'weekly',
@@ -59,7 +70,6 @@ export class DetailsPgComponent implements OnInit {
         });
     }
     selectedChange(m: any) {
-        console.log('m is this:', m);
         if (!this.selectedRangeValue?.start || this.selectedRangeValue?.end) {
             this.selectedRangeValue = new DateRange<Date>(m, null);
         } else {

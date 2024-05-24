@@ -13,8 +13,10 @@ import { Hotel } from '../models/hotel.model';
 @Injectable()
 export class FetchHotelsService implements OnDestroy {
     private hotelsSubject = new BehaviorSubject<Hotel[]>([]);
-    hotels$ = this.hotelsSubject.asObservable();
     fetchSub = new Subscription();
+    get hotels$(): Observable<Hotel[]> {
+        return this.hotelsSubject.asObservable();
+    }
 
     constructor(private baseproxySrv: BaseProxyService) {}
 
@@ -23,7 +25,6 @@ export class FetchHotelsService implements OnDestroy {
             .get<Hotel[]>(url, filters)
             .pipe(catchError((err: Error) => of([])))
             .subscribe((hotels: Hotel[]) => {
-                console.log(hotels);
                 this.hotelsSubject.next(hotels);
             });
     }

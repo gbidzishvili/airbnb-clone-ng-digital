@@ -41,8 +41,7 @@ export class HotelComponent {
 
     constructor(private router: Router) {}
 
-    gotoDetails() {
-        this.router.navigate(['/details']);
-        console.log(this.hotelInfo);
+    gotoDetails(id: number) {
+        this.router.navigate(['/details/' + id]);
     }
 }

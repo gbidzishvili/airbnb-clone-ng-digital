@@ -32,7 +32,6 @@ export class FetchAmenitiesService implements OnInit {
                 shareReplay(1)
             )
             .subscribe((amenitys: amenity[]) => {
-                console.log(amenitys);
                 this.amenitiesSubject.next(amenitys);
             });
     }

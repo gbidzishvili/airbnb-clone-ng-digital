@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { BaseProxyService } from '../../../../core/services/base-proxy.service';
 import { Hotel } from '../../models/hotel.model';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, skip, tap } from 'rxjs';
 import { FetchHotelsService } from '../../services/fetch-hotels.service';
 @Component({
     selector: 'app-hotel-list',
@@ -17,6 +17,7 @@ import { FetchHotelsService } from '../../services/fetch-hotels.service';
 export class HotelListComponent implements OnInit {
     @Input() title: string = '';
     ErrorMessage!: string;
+    hotels$!: Observable<Hotel[]>;
     constructor(public fetchHotelsSrv: FetchHotelsService) {}
     ngOnInit() {
         this.initHotels();
@@ -25,6 +26,13 @@ export class HotelListComponent implements OnInit {
         this.fetchHotelsSrv.fetchHotels(
             'http://www.airbnb-digital-students.somee.com/get-all-hotels'
         );
-        this.ErrorMessage = 'No hotels found matching the criteria!';
+        this.hotels$ = this.fetchHotelsSrv.hotels$.pipe(
+            skip(1),
+            tap((hotels) => {
+                this.ErrorMessage = !hotels?.length
+                    ? 'No hotels found matching the criteria!'
+                    : '';
+            })
+        );
     }
 }

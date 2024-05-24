@@ -7,6 +7,7 @@ import {
     transition,
     animate,
 } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-hotel',
@@ -38,16 +39,10 @@ export class HotelComponent {
 
     currentSlide = 0;
 
-    // animationState: string = 'start';
+    constructor(private router: Router) {}
 
-    // nextSlide() {
-    //     this.animationState = 'right';
-    //     this.currentSlide = (this.currentSlide + 1) % this.slides.length;
-    // }
-
-    // previousSlide() {
-    //     this.animationState = 'left';
-    //     this.currentSlide =
-    //         (this.currentSlide - 1 + this.slides.length) % this.slides.length;
-    // }
+    gotoDetails() {
+        this.router.navigate(['/details']);
+        console.log(this.hotelInfo);
+    }
 }

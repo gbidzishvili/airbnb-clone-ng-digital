@@ -5,6 +5,28 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    .one-night-price {
+        font-weight: bold;
+        font-weight: 500;
+        font-size: 2.4rem;
+        .thin-text {
+            font-size: 1.8rem;
+            font-weight: 400;
+        }
+    }
+    .reserve-button {
+        background: linear-gradient(90deg, #ff5a5f, #cb4e8a);
+        border: none;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        color: #fff;
+        font-weight: 500;
+    }
+    .hint {
+        display: flex;
+        justify-content: center;
+        padding: 0.5rem;
+    }
     .price {
         &-details {
             text-decoration: underline;

@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
     providedIn: 'root',
 })
 export class PriceCalculatorService {
-    private totalSource = new BehaviorSubject<number>(0);
+    private totalSource = new BehaviorSubject<number>(5);
     total$ = this.totalSource.asObservable();
 
     private pricePerNight = 366; // Example price per night

@@ -1,91 +1,16 @@
-<div class="container" *ngIf="hotel$ | async as hotel">
-    <h1 class="title">
-        {{ hotel.name.split(" ").slice(0, -1).join(" ") }}
-        <span class="pink">{{
-            hotel.name.split(" ")[hotel.name.split(" ").length - 1]
-        }}</span>
-    </h1>
-    <div class="container-images">
-        <img class="banner-image" [src]="hotel.images[0].url" alt="" />
-
-        <div class="carousel" *ngIf="hotel.rooms[0]">
-            <app-carousel [slides]="hotel.rooms[0].roomImages"></app-carousel>
-        </div>
-        <div class="carousel" *ngIf="hotel.rooms[1]">
-            <app-carousel [slides]="hotel.rooms[1].roomImages"></app-carousel>
-        </div>
-        <div class="info">
-            <div class="header">
-                {{ hotel.description }}{{ hotel.address.city }},{{
-                    hotel.address.country
-                }}
-            </div>
-            <div class="info-details">
-                <mat-list-item>3 guests</mat-list-item>
-                <mat-list-item>1 bedroom</mat-list-item>
-                <mat-list-item>2 beds</mat-list-item>
-                <mat-list-item>1 bath</mat-list-item>
-            </div>
-            <div class="hotel-stars">
-                <mat-icon>star</mat-icon><span> 5.0 (262)</span>
-            </div>
-            <div class="description"></div>
-        </div>
-    </div>
-    <div style="display: flex; justify-content: center; width: 100%">
-        <div class="calendar">
-            <mat-calendar
-                [selected]="selectedRangeValue"
-                (selectedChange)="selectedChange($event)"
-            >
-            </mat-calendar>
-            <div style="display: flex; justify-content: space-between">
-                <div class="start-date">
-                    Start Date:
-                    {{ selectedRangeValue?.start | date : "shortDate" }}
-                </div>
-                <div class="end-date">
-                    End Date: {{ selectedRangeValue?.end | date : "shortDate" }}
-                </div>
-            </div>
-        </div>
+<div *ngIf="hotel$ | async as hotel">
+    <app-banner [hotel]="hotel"></app-banner>
+    <div class="container">
+        <app-calendar (sendNights)="getNights($event)"></app-calendar>
         <app-calculator [nights]="nights"></app-calculator>
     </div>
-    <div class="maps">
+    <!-- <div class="maps">
         <header>
             <h1 class="title">Where you’ll be</h1>
             <h1 class="name">Hoter-iveria</h1>
         </header>
 
         <div id="map"></div>
-    </div>
-    <section class="host-profile">
-        <figure class="host-profile-header">
-            <img
-                src="https://a0.muscache.com/im/pictures/user/User-266098501/original/2166a8b6-6e00-4436-92bd-356e998f0b19.jpeg?im_w=240"
-                alt="Profile image of host Nick"
-            />
-            <div class="host-profile-header-info">
-                <div class="header">Hosted By Nick</div>
-                <figcaption class="host-join-date">
-                    Joined in October 2016
-                </figcaption>
-            </div>
-        </figure>
-        <div class="host-profile-badges">
-            <span class="reviews">
-                <mat-icon>star</mat-icon>
-                <span>19 Reviews</span>
-            </span>
-            <span class="verified">
-                <mat-icon>verified_user</mat-icon><span>Identity verified</span>
-            </span>
-        </div>
-        <div class="host-profile-details">
-            <p>Languages: English, Deutsch, Türkçe</p>
-            <p>Response rate: 100%</p>
-            <p>Response time: within an hour</p>
-        </div>
-        <button class="btn-contact-host">Contact Host</button>
-    </section>
+    </div> -->
+    <app-host-profile></app-host-profile>
 </div>

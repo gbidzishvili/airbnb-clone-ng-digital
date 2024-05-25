@@ -11,8 +11,11 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { CalculatorComponent } from './components/calculator/calculator.component';
 import { SharedComponentsModule } from '../../shared/components/shared-components.module';
+import { BannerComponent } from './components/banner/banner.component';
+import { HostProfileComponent } from './components/host-profile/host-profile.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
 @NgModule({
-    declarations: [DetailsPgComponent, CalculatorComponent],
+    declarations: [DetailsPgComponent, CalculatorComponent, BannerComponent, HostProfileComponent, CalendarComponent],
     imports: [
         CommonModule,
         DetailsPgRoutingModule,

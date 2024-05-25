@@ -1,0 +1,44 @@
+<div class="container">
+    <h1 class="title">
+        {{ hotel.name.split(" ").slice(0, -1).join(" ") }}
+        <span class="pink">{{
+            hotel.name.split(" ")[hotel.name.split(" ").length - 1]
+        }}</span>
+    </h1>
+    <div class="container-images">
+        <img class="banner-image" [src]="hotel.images[0].url" alt="" />
+
+        <div class="carousel" *ngIf="hotel.rooms[0]">
+            <app-carousel [slides]="hotel.rooms[0].roomImages"></app-carousel>
+        </div>
+        <div class="carousel" *ngIf="hotel.rooms[1]">
+            <app-carousel [slides]="hotel.rooms[1].roomImages"></app-carousel>
+        </div>
+        <div class="info">
+            <div class="header">
+                {{ hotel.description }}{{ hotel.address.city }},{{
+                    hotel.address.country
+                }}
+            </div>
+            <div class="info-details">
+                <mat-list-item>guests - 3 </mat-list-item>
+                <mat-list-item
+                    >bedrooms - {{ hotel.rooms.length }}
+                </mat-list-item>
+                <mat-list-item>beds - 2</mat-list-item>
+                <mat-list-item>bath - 1 </mat-list-item>
+            </div>
+            <div class="hotel-stars">
+                <mat-icon>star</mat-icon><span> {{ hotel.rating }} (262)</span>
+            </div>
+            <div class="description">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Explicabo adipisci, ut fugit corrupti, eaque nulla a non
+                nesciunt cum nemo dolorum ratione doloremque enim quis officia,
+                cumque magni. Eius facilis est repellat necessitatibus, culpa id
+                ut eaque nulla explicabo accusantium asperiores a voluptatibus
+                eos vel nisi exercitationem reprehenderit impedit sed.
+            </div>
+        </div>
+    </div>
+</div>

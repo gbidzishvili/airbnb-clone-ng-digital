@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Input,
+    OnInit,
+} from '@angular/core';
 import { Hotel } from '../../models/hotel.model';
 import {
     trigger,
@@ -40,8 +45,4 @@ export class HotelComponent {
     currentSlide = 0;
 
     constructor(private router: Router) {}
-
-    gotoDetails(id: number) {
-        this.router.navigate(['/details/' + id]);
-    }
 }

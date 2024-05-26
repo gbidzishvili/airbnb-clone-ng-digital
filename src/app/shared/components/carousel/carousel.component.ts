@@ -9,6 +9,7 @@ import {
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Input } from '@angular/core';
 import { Image } from '../../../views/home-pg/models';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-carousel',
@@ -83,7 +84,8 @@ import { Image } from '../../../views/home-pg/models';
 export class CarouselComponent {
     currentSlide = 0;
     @Input() slides!: Image[];
-
+    @Input() id!: number;
+    constructor(private router: Router) {}
     goToSlide(index: number) {
         this.currentSlide = index;
     }
@@ -97,5 +99,8 @@ export class CarouselComponent {
         const previousSlide =
             (this.currentSlide - 1 + this.slides.length) % this.slides.length;
         this.goToSlide(previousSlide);
+    }
+    gotoDetails(id: number) {
+        if (id) this.router.navigate(['/details/' + id]);
     }
 }

@@ -1,6 +1,9 @@
 <section class="hotel-card">
-    <div (click)="gotoDetails(hotelInfo.id)" class="hotel-card-image-container">
-        <app-carousel [slides]="hotelInfo.images"></app-carousel>
+    <div class="hotel-card-image-container">
+        <app-carousel
+            [id]="hotelInfo.id"
+            [slides]="hotelInfo.images"
+        ></app-carousel>
     </div>
     <ul class="hotel-card-info-container">
         <li class="hotel-name">

@@ -16,7 +16,7 @@
     </button>
 
     <!-- slider -->
-    <div class="slider-container">
+    <div class="slider-container" (click)="gotoDetails(id)">
         <div
             *ngFor="let slide of slides; let i = index"
             [@slideInOut]="currentSlide"

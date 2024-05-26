@@ -9,6 +9,7 @@ import {
 import { Subscription } from 'rxjs';
 import { PriceCalculatorService } from '../../services/price-calculator.service';
 import { Hotel } from '../../../home-pg/models/hotel.model';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-calculator',
@@ -16,24 +17,25 @@ import { Hotel } from '../../../home-pg/models/hotel.model';
     styleUrl: './calculator.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CalculatorComponent implements OnInit, OnDestroy {
+export class CalculatorComponent {
     @Input() hotel!: Hotel;
     @Input() set nights(value: any) {
-        this.priceCalculatorService.updateNights(value);
-    }
-    price = 366;
-    total = 0;
-    private subscription: Subscription = new Subscription();
-
-    constructor(public priceCalculatorService: PriceCalculatorService) {}
-
-    ngOnInit(): void {
-        // this.subscription = this.priceCalculatorService.total$.subscribe(
-        //     (total) => (this.total = total)
-        // );
+        this.priceCalculatorService.updateNights(
+            value,
+            this.hotel.rooms[0].pricePerNight
+        );
     }
 
-    ngOnDestroy(): void {
-        // this.subscription.unsubscribe(); // Prevent memory leaks
+    constructor(
+        public priceCalculatorService: PriceCalculatorService,
+        private router: Router
+    ) {}
+
+    gotoConfirmReservation() {
+        console.log(this.hotel);
+        console.log(this.priceCalculatorService.nights$);
+        console.log(this.priceCalculatorService.startDate$);
+        console.log(this.priceCalculatorService.endDate$);
+        this.router.navigate(['reservation']);
     }
 }

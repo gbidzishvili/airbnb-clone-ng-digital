@@ -12,10 +12,9 @@ export class PriceCalculatorService {
     endDate$ = new BehaviorSubject<Date>(
         new Date(new Date().setDate(new Date().getDate() + 5))
     );
-    private pricePerNight = 366; // Example price per night
 
-    updateNights(value: any): void {
-        const total = value.nights * this.pricePerNight;
+    updateNights(value: any, pricePerNight: number): void {
+        const total = value.nights * pricePerNight;
         this.totalSource.next(total);
         this.nights$.next(value.nights);
         this.startDate$.next(value.startDate);

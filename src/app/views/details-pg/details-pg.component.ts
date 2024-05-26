@@ -24,7 +24,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [provideNativeDateAdapter()],
 })
-export class DetailsPgComponent implements OnInit, AfterViewInit {
+export class DetailsPgComponent implements OnInit {
     nights = new BehaviorSubject<{
         nights: number;
         startDate: Date;
@@ -49,10 +49,7 @@ export class DetailsPgComponent implements OnInit, AfterViewInit {
         startDate: Date;
         endDate: Date;
     }) {
-        console.log('recivedObject', recivedObject);
         this.nights.next(recivedObject);
-        // this.startDate.next(recivedObject.startDate);
-        // this.endDate.next(recivedObject.endDate);
     }
     ngOnInit(): void {
         this.route.paramMap.subscribe((paramsMap: ParamMap) => {
@@ -68,20 +65,5 @@ export class DetailsPgComponent implements OnInit, AfterViewInit {
                 )
                 .subscribe((v: any) => console.log(v));
         });
-    }
-    ngAfterViewInit() {
-        // const loader = new Loader({
-        //     apiKey: 'AIzaSyAYpfjjDa8iY-FI-Mc3b8YM4iUS60We7pQ',
-        //     version: 'weekly',
-        // });
-        // loader.load().then(async () => {
-        //     const { Map } = (await google.maps.importLibrary(
-        //         'maps'
-        //     )) as google.maps.MapsLibrary;
-        //     let map = new Map(document.getElementById('map') as HTMLElement, {
-        //         center: { lat: 41.7151377, lng: 44.827096 },
-        //         zoom: 14,
-        //     });
-        // });
     }
 }

@@ -1,10 +1,11 @@
 :host {
-    width: 50%;
+    width: 40%;
 }
 .calculator {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    gap: 2rem;
     .one-night-price {
         font-weight: bold;
         font-weight: 500;
@@ -14,18 +15,31 @@
             font-weight: 400;
         }
     }
-    .reserve-button {
-        background: linear-gradient(90deg, #ff5a5f, #cb4e8a);
-        border: none;
-        border-radius: 0.5rem;
-        padding: 1rem;
-        color: #fff;
-        font-weight: 500;
-    }
-    .hint {
+    .chek-in-out {
         display: flex;
-        justify-content: center;
-        padding: 0.5rem;
+        justify-content: space-between;
+        align-items: center;
+        .date {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+    div {
+        .reserve-button {
+            background: linear-gradient(90deg, #ff5a5f, #cb4e8a);
+            border: none;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            color: #fff;
+            font-weight: 500;
+            width: 100%;
+        }
+        .hint {
+            display: flex;
+            justify-content: center;
+            padding: 0.5rem;
+        }
     }
     .price {
         &-details {

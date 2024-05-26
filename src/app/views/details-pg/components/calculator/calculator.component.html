@@ -5,8 +5,23 @@
         }}
         <span class="thin-text">night</span>
     </div>
-    <button class="reserve-button">Reserve</button>
-    <div class="hint thin-text">You won't be charged yet</div>
+    <div class="chek-in-out">
+        <div class="date">
+            <span>CHEK-IN</span>
+            {{
+                priceCalculatorService.startDate$ | async | date : "dd/MM/yyyy"
+            }}
+        </div>
+        <span>–</span>
+        <div class="date">
+            <span>CHEKOUT</span>
+            {{ priceCalculatorService.endDate$ | async | date : "dd/MM/yyyy" }}
+        </div>
+    </div>
+    <div>
+        <button class="reserve-button">Reserve</button>
+        <div class="hint thin-text">You won't be charged yet</div>
+    </div>
     <div class="price space-between">
         <span class="price-details">
             {{

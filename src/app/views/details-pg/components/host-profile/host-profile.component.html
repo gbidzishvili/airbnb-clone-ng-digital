@@ -1,29 +1,36 @@
-<section class="host-profile">
-    <figure class="host-profile-header">
-        <img
-            src="https://a0.muscache.com/im/pictures/user/User-266098501/original/2166a8b6-6e00-4436-92bd-356e998f0b19.jpeg?im_w=240"
-            alt="Profile image of host Nick"
-        />
-        <div class="host-profile-header-info">
-            <div class="header">Hosted By Nick</div>
-            <figcaption class="host-join-date">
-                Joined in October 2016
-            </figcaption>
+<section class="container">
+    <div class="host-profile">
+        <figure class="host-profile-header">
+            <div class="host-profile-header-icon">
+                <img
+                    src="https://a0.muscache.com/im/pictures/user/User-266098501/original/2166a8b6-6e00-4436-92bd-356e998f0b19.jpeg?im_w=240"
+                    alt="Profile image of host Nick"
+                />
+                <div class="host-profile-header-info">
+                    <div class="header">
+                        Hosted By
+                        <span>{{ hotel.owner.fullName }}</span>
+                    </div>
+                    <figcaption class="host-join-date">
+                        Joined in October 2016
+                    </figcaption>
+                </div>
+            </div>
+            <span class="verified">
+                <mat-icon>verified_user</mat-icon><span>Identity verified</span>
+            </span>
+        </figure>
+        <div class="host-profile-badges">
+            <span class="reviews">
+                <mat-icon>star</mat-icon>
+                <span>19 Reviews</span>
+            </span>
         </div>
-    </figure>
-    <div class="host-profile-badges">
-        <span class="reviews">
-            <mat-icon>star</mat-icon>
-            <span>19 Reviews</span>
-        </span>
-        <span class="verified">
-            <mat-icon>verified_user</mat-icon><span>Identity verified</span>
-        </span>
+        <div>
+            <p>Languages: English, Deutsch, Türkçe</p>
+            <p>Response rate: 100%</p>
+            <p>Response time: within an hour</p>
+        </div>
+        <button class="btn-contact-host">Contact Host</button>
     </div>
-    <div class="host-profile-details">
-        <p>Languages: English, Deutsch, Türkçe</p>
-        <p>Response rate: 100%</p>
-        <p>Response time: within an hour</p>
-    </div>
-    <button class="btn-contact-host">Contact Host</button>
 </section>

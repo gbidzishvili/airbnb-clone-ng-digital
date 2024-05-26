@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Hotel } from '../../../home-pg/models/hotel.model';
 
 @Component({
   selector: 'app-host-profile',
@@ -7,5 +8,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HostProfileComponent {
+  @Input() hotel!:Hotel;
 
 }

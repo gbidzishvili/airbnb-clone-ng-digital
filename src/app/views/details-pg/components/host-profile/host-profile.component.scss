@@ -1,33 +1,67 @@
-.host-profile {
-    display: flex;
-    flex-direction: column;
+.container {
+    width: 80%;
     margin: 0 auto;
-    gap: 1rem;
-    width: 50%;
-    &-header {
+    background-color: #f0efe9;
+    width: 80%;
+    padding: 4rem;
+    margin: 0 auto;
+    background-color: #f0efe9;
+    border-radius: 2rem;
+    margin-bottom: 4rem;
+    .host-profile {
         display: flex;
-        img {
-            width: 6.4rem;
-            height: 6.4rem;
-            border-radius: 50%;
-        }
-        &-info {
+        flex-direction: column;
+        gap: 1rem;
+        background: #fff;
+        padding: 2rem;
+        border-radius: 2rem;
+        &-header {
             display: flex;
-            flex-direction: column;
-            .header {
-                font-size: 24px;
-                font-weight: 700;
-                margin-bottom: 1rem;
+            justify-content: space-between;
+            &-icon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+            }
+            .verified {
+                display: flex;
+                align-items: center;
+                color: #ff5a5f;
+            }
+            img {
+                width: 6.4rem;
+                height: 6.4rem;
+                border-radius: 50%;
+            }
+            &-info {
+                display: flex;
+                flex-direction: column;
+                .header {
+                    font-size: 24px;
+                    font-weight: 700;
+                    margin-bottom: 1rem;
+                    span {
+                        color: #ff5a5f;
+                    }
+                }
+            }
+        }
+        &-badges {
+            display: flex;
+            justify-content: space-between;
+            & .reviews {
+                display: flex;
+                align-items: center;
             }
         }
     }
-    &-badges {
-        display: flex;
-        justify-content: space-between;
-        & .reviews,
-        & .verified {
-            display: flex;
-            align-items: center;
-        }
+    .btn-contact-host {
+        border: none;
+        padding: 1rem;
+        border-radius: 1rem;
+        font-weight: 600;
+        color: #fff;
+        background: linear-gradient(90deg, #ff5a5f, #cb4e8a);
     }
 }

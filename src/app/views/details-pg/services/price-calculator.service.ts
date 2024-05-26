@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { Hotel } from '../../home-pg/models/hotel.model';
 
 @Injectable({
     providedIn: 'root',

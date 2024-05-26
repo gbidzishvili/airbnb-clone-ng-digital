@@ -24,7 +24,8 @@
         </button>
         <div class="hint thin-text">You won't be charged yet</div>
     </div>
-    <div class="price space-between">
+    <app-reservation-summary [hotel]="hotel"></app-reservation-summary>
+    <!-- <div class="price space-between">
         <span class="price-details">
             {{
                 hotel.rooms[0].pricePerNight
@@ -46,5 +47,5 @@
                 | async
                 | currency : "USD" : "symbol" : "1.0-0"
         }}</span>
-    </div>
+    </div> -->
 </div>

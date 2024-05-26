@@ -32,10 +32,10 @@ export class CalculatorComponent {
     ) {}
 
     gotoConfirmReservation() {
-        console.log(this.hotel);
-        console.log(this.priceCalculatorService.nights$);
-        console.log(this.priceCalculatorService.startDate$);
-        console.log(this.priceCalculatorService.endDate$);
+        // console.log(this.hotel);
+        // console.log(this.priceCalculatorService.nights$);
+        // console.log(this.priceCalculatorService.startDate$);
+        // console.log(this.priceCalculatorService.endDate$);
         this.router.navigate(['reservation']);
     }
 }

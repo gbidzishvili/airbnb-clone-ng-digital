@@ -26,6 +26,7 @@ export class FetchHotelsService implements OnDestroy {
             .pipe(catchError((err: Error) => of([])))
             .subscribe((hotels: Hotel[]) => {
                 this.hotelsSubject.next(hotels);
+                console.log(hotels);
             });
     }
 

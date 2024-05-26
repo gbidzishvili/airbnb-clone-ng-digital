@@ -25,15 +25,34 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
     providers: [provideNativeDateAdapter()],
 })
 export class DetailsPgComponent implements OnInit, AfterViewInit {
-    nights = new BehaviorSubject<number>(5);
+    nights = new BehaviorSubject<{
+        nights: number;
+        startDate: Date;
+        endDate: Date;
+    }>({
+        nights: 5,
+        startDate: new Date(),
+        endDate: new Date(new Date().setDate(new Date().getDate() + 5)),
+    });
+    startDate = new BehaviorSubject<Date>(new Date());
+    endDate = new BehaviorSubject<any>(
+        new Date().setDate(new Date().getDate() + 5)
+    );
     hotel$!: Observable<Hotel>;
 
     constructor(
         public baseProxySrv: BaseProxyService,
         public route: ActivatedRoute
     ) {}
-    getNights(nights: any) {
-        this.nights.next(nights);
+    getNights(recivedObject: {
+        nights: number;
+        startDate: Date;
+        endDate: Date;
+    }) {
+        console.log('recivedObject', recivedObject);
+        this.nights.next(recivedObject);
+        // this.startDate.next(recivedObject.startDate);
+        // this.endDate.next(recivedObject.endDate);
     }
     ngOnInit(): void {
         this.route.paramMap.subscribe((paramsMap: ParamMap) => {
@@ -42,6 +61,12 @@ export class DetailsPgComponent implements OnInit, AfterViewInit {
                 id,
                 'http://www.airbnb-digital-students.somee.com/get-by-id'
             );
+            this.baseProxySrv
+                .getById(
+                    id,
+                    'http://www.airbnb-digital-students.somee.com/get-by-id'
+                )
+                .subscribe((v: any) => console.log(v));
         });
     }
     ngAfterViewInit() {

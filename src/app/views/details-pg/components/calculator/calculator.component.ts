@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { PriceCalculatorService } from '../../services/price-calculator.service';
+import { Hotel } from '../../../home-pg/models/hotel.model';
 
 @Component({
     selector: 'app-calculator',
@@ -16,24 +17,23 @@ import { PriceCalculatorService } from '../../services/price-calculator.service'
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalculatorComponent implements OnInit, OnDestroy {
-    @Input() set nights(value: number) {
+    @Input() hotel!: Hotel;
+    @Input() set nights(value: any) {
         this.priceCalculatorService.updateNights(value);
     }
     price = 366;
     total = 0;
     private subscription: Subscription = new Subscription();
 
-    constructor(private priceCalculatorService: PriceCalculatorService) {}
+    constructor(public priceCalculatorService: PriceCalculatorService) {}
 
     ngOnInit(): void {
-        this.subscription = this.priceCalculatorService.total$.subscribe({
-            next: (total) => {
-                this.total = total;
-            },
-        });
+        // this.subscription = this.priceCalculatorService.total$.subscribe(
+        //     (total) => (this.total = total)
+        // );
     }
 
     ngOnDestroy(): void {
-        this.subscription.unsubscribe(); // Prevent memory leaks
+        // this.subscription.unsubscribe(); // Prevent memory leaks
     }
 }

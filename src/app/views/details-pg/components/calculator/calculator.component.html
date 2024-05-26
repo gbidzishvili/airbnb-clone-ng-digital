@@ -1,22 +1,33 @@
 <div class="calculator">
     <div class="one-night-price">
-        {{ price | currency : "USD" : "symbol" : "1.0-0" }}
+        {{
+            hotel.rooms[0].pricePerNight | currency : "USD" : "symbol" : "1.0-0"
+        }}
         <span class="thin-text">night</span>
     </div>
     <button class="reserve-button">Reserve</button>
     <div class="hint thin-text">You won't be charged yet</div>
     <div class="price space-between">
         <span class="price-details">
-            {{ price | currency : "USD" : "symbol" : "1.0-0" }} x
-            {{ nights }} nights
+            {{
+                hotel.rooms[0].pricePerNight
+                    | currency : "USD" : "symbol" : "1.0-0"
+            }}
+            x {{ priceCalculatorService.nights$ | async }} nights
         </span>
         <span class="price-total">{{
-            total | currency : "USD" : "symbol" : "1.0-0"
+            priceCalculatorService.total$
+                | async
+                | currency : "USD" : "symbol" : "1.0-0"
         }}</span>
     </div>
     <hr />
     <div class="before-taxes space-between">
         <span>Total before taxes</span>
-        <span>{{ total | currency : "USD" : "symbol" : "1.0-0" }}</span>
+        <span>{{
+            priceCalculatorService.total$
+                | async
+                | currency : "USD" : "symbol" : "1.0-0"
+        }}</span>
     </div>
 </div>

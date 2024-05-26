@@ -26,8 +26,6 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class DetailsPgComponent implements OnInit, AfterViewInit {
     nights = new BehaviorSubject<number>(5);
-    // nights!: number;
-    // nights!: number;
     hotel$!: Observable<Hotel>;
 
     constructor(
@@ -36,38 +34,29 @@ export class DetailsPgComponent implements OnInit, AfterViewInit {
     ) {}
     getNights(nights: any) {
         this.nights.next(nights);
-        console.log('nights event:', this.nights);
     }
     ngOnInit(): void {
         this.route.paramMap.subscribe((paramsMap: ParamMap) => {
-            console.log(paramsMap.get('id'));
             const id = paramsMap.get('id');
             this.hotel$ = this.baseProxySrv.getById(
                 id,
                 'http://www.airbnb-digital-students.somee.com/get-by-id'
             );
-            this.baseProxySrv
-                .getById(
-                    id,
-                    'http://www.airbnb-digital-students.somee.com/get-by-id'
-                )
-                .subscribe((v: any) => console.log(v.rooms[0].pricePerNight));
         });
     }
     ngAfterViewInit() {
-        const loader = new Loader({
-            apiKey: 'AIzaSyAYpfjjDa8iY-FI-Mc3b8YM4iUS60We7pQ',
-            version: 'weekly',
-        });
-
-        loader.load().then(async () => {
-            const { Map } = (await google.maps.importLibrary(
-                'maps'
-            )) as google.maps.MapsLibrary;
-            let map = new Map(document.getElementById('map') as HTMLElement, {
-                center: { lat: 41.7151377, lng: 44.827096 },
-                zoom: 14,
-            });
-        });
+        // const loader = new Loader({
+        //     apiKey: 'AIzaSyAYpfjjDa8iY-FI-Mc3b8YM4iUS60We7pQ',
+        //     version: 'weekly',
+        // });
+        // loader.load().then(async () => {
+        //     const { Map } = (await google.maps.importLibrary(
+        //         'maps'
+        //     )) as google.maps.MapsLibrary;
+        //     let map = new Map(document.getElementById('map') as HTMLElement, {
+        //         center: { lat: 41.7151377, lng: 44.827096 },
+        //         zoom: 14,
+        //     });
+        // });
     }
 }

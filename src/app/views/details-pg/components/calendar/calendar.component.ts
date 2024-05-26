@@ -36,13 +36,11 @@ export class CalendarComponent {
                 this.selectedRangeValue.end
             );
         }
-        // this.selectedRangeValueChange.emit(this.selectedRangeValue);
     }
     countDays(start: any, end: any) {
         let startDate = new Date(start);
         let endDate = new Date(end);
         this.datesForm?.get('startDate')?.setValue(startDate);
-        console.log(this.datesForm.get('startDate')?.value);
         // Calculate the difference in milliseconds. Ensure Operands Are Treated as Numbers
         let differenceInMilliseconds = +endDate - +startDate;
         let differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24);

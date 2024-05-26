@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="price space-between">
+        <span class="price-details">
+            {{
+                hotel.rooms[0].pricePerNight
+                    | currency : "USD" : "symbol" : "1.0-0"
+            }}
+            x {{ priceCalculatorService.nights$ | async }} nights
+        </span>
+        <span class="price-total">{{
+            priceCalculatorService.total$
+                | async
+                | currency : "USD" : "symbol" : "1.0-0"
+        }}</span>
+    </div>
+    <hr />
+    <div class="before-taxes space-between">
+        <span>Total before taxes</span>
+        <span>{{
+            priceCalculatorService.total$
+                | async
+                | currency : "USD" : "symbol" : "1.0-0"
+        }}</span>
+    </div>
+</div>

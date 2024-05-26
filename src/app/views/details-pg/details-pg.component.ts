@@ -13,9 +13,9 @@ import { DateRange } from '@angular/material/datepicker';
 import { Loader } from '@googlemaps/js-api-loader';
 import { FetchHotelsService } from '../home-pg/services/fetch-hotels.service';
 import { BaseProxyService } from '../../core/services/base-proxy.service';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Hotel } from '../home-pg/models/hotel.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
     selector: 'app-details-pg',
@@ -25,7 +25,8 @@ import { ActivatedRoute } from '@angular/router';
     providers: [provideNativeDateAdapter()],
 })
 export class DetailsPgComponent implements OnInit, AfterViewInit {
-    @Input() nights!: number;
+    nights = new BehaviorSubject<number>(5);
+    // nights!: number;
     // nights!: number;
     hotel$!: Observable<Hotel>;
 
@@ -33,22 +34,24 @@ export class DetailsPgComponent implements OnInit, AfterViewInit {
         public baseProxySrv: BaseProxyService,
         public route: ActivatedRoute
     ) {}
-    getNights(nigths: any) {
+    getNights(nights: any) {
+        this.nights.next(nights);
         console.log('nights event:', this.nights);
-        this.nights = nigths;
     }
     ngOnInit(): void {
-        this.route.paramMap.subscribe((v: any) => {
+        this.route.paramMap.subscribe((paramsMap: ParamMap) => {
+            console.log(paramsMap.get('id'));
+            const id = paramsMap.get('id');
             this.hotel$ = this.baseProxySrv.getById(
-                v['params']['id'],
+                id,
                 'http://www.airbnb-digital-students.somee.com/get-by-id'
             );
             this.baseProxySrv
                 .getById(
-                    v['params']['id'],
+                    id,
                     'http://www.airbnb-digital-students.somee.com/get-by-id'
                 )
-                .subscribe((v) => console.log(v));
+                .subscribe((v: any) => console.log(v.rooms[0].pricePerNight));
         });
     }
     ngAfterViewInit() {

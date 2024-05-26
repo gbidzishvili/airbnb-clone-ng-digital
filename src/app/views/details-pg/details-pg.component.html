@@ -2,7 +2,10 @@
     <app-banner [hotel]="hotel"></app-banner>
     <div class="container">
         <app-calendar (sendNights)="getNights($event)"></app-calendar>
-        <app-calculator [nights]="nights"></app-calculator>
+        <app-calculator
+            [hotel]="hotel"
+            [nights]="nights | async"
+        ></app-calculator>
     </div>
     <!-- <div class="maps">
         <header>

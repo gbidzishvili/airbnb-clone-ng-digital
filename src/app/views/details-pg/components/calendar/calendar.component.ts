@@ -14,7 +14,11 @@ import { DateRange } from '@angular/material/datepicker';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalendarComponent {
-    @Output() sendNights = new EventEmitter<number>();
+    @Output() sendNights = new EventEmitter<{
+        nights: number;
+        startDate: Date;
+        endDate: Date;
+    }>();
     selectedRangeValue: DateRange<Date> | undefined;
     datesForm = new FormGroup({
         startDate: new FormControl<Date | null>(null),
@@ -40,10 +44,13 @@ export class CalendarComponent {
     countDays(start: any, end: any) {
         let startDate = new Date(start);
         let endDate = new Date(end);
+        console.log('CHEK-IN', start);
+        console.log('CHEK-OUT', end);
+
         this.datesForm?.get('startDate')?.setValue(startDate);
         // Calculate the difference in milliseconds. Ensure Operands Are Treated as Numbers
         let differenceInMilliseconds = +endDate - +startDate;
         let differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24);
-        this.sendNights.emit(differenceInDays);
+        this.sendNights.emit({ nights: differenceInDays, startDate, endDate });
     }
 }

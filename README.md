@@ -26,6 +26,37 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## Application structure
 
+graph TB
+A[app]
+A --> B[core]
+B --> C[guard]
+B --> D[interceptors]
+B --> E[models]
+B --> F[services]
+B --> G[core.module.ts]
+A --> H[navigation]
+H --> I[components]
+H --> J[navigation.module.ts]
+A --> K[shared]
+K --> L[components]
+K --> M[directives]
+K --> N[modals]
+K --> O[modules]
+K --> P[pipes]
+K --> Q[shared.module.ts]
+A --> R[views]
+R --> S[authorization]
+R --> T[confirm-reservation-pg]
+R --> U[details-pg]
+R --> V[home-pg]
+R --> W[services]
+R --> X[app-routing.module.ts]
+R --> Y[app.component.html]
+R --> Z[app.exe.component.scss]
+R --> AA[app.component.spec.ts]
+R --> AB[app.component.ts]
+R --> AC[app.module.ts]
+
 ## Libraries
 
 -   ngneat/until-destroy - provides a way to manage subscriptions automatically
@@ -38,5 +69,3 @@ Giorgi Bidzishvili
 ## License
 
 [MIT License](LICENSE)
-
-[{"state":{"code":"graph TB\n A[\"app\"]\n A --> B[\"core\"]\n B --> C[\"guard\"]\n B --> D[\"interceptors\"]\n B --> E[\"models\"]\n B --> F[\"services\"]\n B --> G[\"core.module.ts\"]\n A --> H[\"navigation\"]\n H --> I[\"components\"]\n H --> J[\"navigation.module.ts\"]\n A --> K[\"shared\"]\n K --> L[\"components\"]\n K --> M[\"directives\"]\n K --> N[\"modals\"]\n K --> O[\"modules\"]\n K --> P[\"pipes\"]\n K --> Q[\"shared.module.ts\"]\n A -----> R[\"views\"]\n R --> S[\"authorization\"]\n R --> T[\"confirm-reservation-pg\"]\n R --> U[\"details-pg\"]\n R --> V[\"home-pg\"]\n R --> W[\"services\"]\n R --> X[\"app-routing.module.ts\"]\n R --> Y[\"app.component.html\"]\n R --> Z[\"app.component.scss\"]\n R --> AA[\"app.component.spec.ts\"]\n R --> AB[\"app.component.ts\"]\n R --> AC[\"app.module.ts\"]","mermaid":"{\n \"theme\": \"default\"\n}","autoSync":true,"updateDiagram":false,"updateEditor":false},"time":1716766538369,"type":"auto","id":"1f998dd0-7f10-427d-981f-56dcd64568c8","name":"ashamed-grass"},{"state":{"code":"graph TB\n A[\"app\"]\n A -----> B[\"core\"]\n B --> C[\"guard\"]\n B --> D[\"interceptors\"]\n B --> E[\"models\"]\n B --> F[\"services\"]\n B --> G[\"core.module.ts\"]\n A ---> H[\"navigation\"]\n H --> I[\"components\"]\n H --> J[\"navigation.module.ts\"]\n A --> K[\"shared\"]\n K --> L[\"components\"]\n K --> M[\"directives\"]\n K --> N[\"modals\"]\n K --> O[\"modules\"]\n K --> P[\"pipes\"]\n K --> Q[\"shared.module.ts\"]\n A --> R[\"views\"]\n R --> S[\"authorization\"]\n R --> T[\"confirm-reservation-pg\"]\n R --> U[\"details-pg\"]\n R --> V[\"home-pg\"]\n R --> W[\"services\"]\n R --> X[\"app-routing.module.ts\"]\n R --> Y[\"app.component.html\"]\n R --> Z[\"app.component.scss\"]\n R --> AA[\"app.component.spec.ts\"]\n R --> AB[\"app.component.ts\"]\n R --> AC[\"app.module.ts\"]","mermaid":"{\n \"theme\": \"default\"\n}","autoSync":true,"updateDiagram":false,"updateEditor":false},"time":1716766478386,"type":"auto","id":"59b3ca95-f475-46f8-a2a6-ed1b55eb2d69","name":"clean-mechanic"}]

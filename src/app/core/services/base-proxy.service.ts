@@ -49,11 +49,6 @@ export class BaseProxyService {
         var fullUrl = `${apiUrl}?id=${id}${
             additionalRouteName != undefined ? `/${additionalRouteName}` : ``
         }`;
-        console.log(
-            fullUrl ===
-                'http://www.airbnb-digital-students.somee.com/get-by-id?id=1'
-        );
-        console.log();
         return this.http.get<T>(fullUrl).pipe<T>(retry(1)) as Observable<T>;
     }
 

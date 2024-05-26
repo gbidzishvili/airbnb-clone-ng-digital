@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FilterHotelsModalComponent } from '../../../../shared/modals/filter-hotels-modal/filter-hotels-modal.component';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Component({
     selector: 'app-filter',
     templateUrl: './filter.component.html',
@@ -14,8 +16,11 @@ export class FilterComponent implements OnInit {
     }
     openFilterModal() {
         const dialogRef = this.dialog.open(FilterHotelsModalComponent);
-        dialogRef.afterClosed().subscribe((result) => {
-            console.log(`Dialog result: ${result}`);
-        });
+        dialogRef
+            .afterClosed()
+            .pipe(untilDestroyed(this))
+            .subscribe((result) => {
+                console.log(`Dialog result: ${result}`);
+            });
     }
 }

@@ -6,12 +6,12 @@ import { FilterHotelsModalComponent } from './filter-hotels-modal/filter-hotels-
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MaterialModule } from '../modules/material/material.module';
-import { PriceRangeComponent } from './components-modal/price-range/price-range.component';
+import { PriceRangeComponent } from './components/price-range/price-range.component';
 import { MatSelectModule } from '@angular/material/select';
-import { ChooseCityComponent } from './components-modal/choose-city/choose-city.component';
-import { MinRatingComponent } from './components-modal/min-rating/min-rating.component';
-import { ChooseAmenitiesComponent } from './components-modal/choose-amenities/choose-amenities.component';
-import { FilterFooterComponent } from './components-modal/filter-footer/filter-footer.component';
+import { ChooseCityComponent } from './components/choose-city/choose-city.component';
+import { MinRatingComponent } from './components/min-rating/min-rating.component';
+import { ChooseAmenitiesComponent } from './components/choose-amenities/choose-amenities.component';
+import { FilterFooterComponent } from './components/filter-footer/filter-footer.component';
 
 @NgModule({
     declarations: [
@@ -30,6 +30,7 @@ import { FilterFooterComponent } from './components-modal/filter-footer/filter-f
         ReactiveFormsModule,
         MatSliderModule,
         MatSelectModule,
+        ReactiveFormsModule,
     ],
     exports: [FilterHotelsModalComponent],
 })

@@ -16,7 +16,9 @@ import { BaseProxyService } from '../../core/services/base-proxy.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Hotel } from '../home-pg/models/hotel.model';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Component({
     selector: 'app-details-pg',
     templateUrl: './details-pg.component.html',
@@ -52,18 +54,14 @@ export class DetailsPgComponent implements OnInit {
         this.nights.next(recivedObject);
     }
     ngOnInit(): void {
-        this.route.paramMap.subscribe((paramsMap: ParamMap) => {
-            const id = paramsMap.get('id');
-            this.hotel$ = this.baseProxySrv.getById(
-                id,
-                'http://www.airbnb-digital-students.somee.com/get-by-id'
-            );
-            this.baseProxySrv
-                .getById(
+        this.route.paramMap
+            .pipe(untilDestroyed(this))
+            .subscribe((paramsMap: ParamMap) => {
+                const id = paramsMap.get('id');
+                this.hotel$ = this.baseProxySrv.getById(
                     id,
                     'http://www.airbnb-digital-students.somee.com/get-by-id'
-                )
-                .subscribe((v: any) => console.log(v));
-        });
+                );
+            });
     }
 }

@@ -1,8 +1,8 @@
 <div class="header">Choose City</div>
 <mat-form-field appearance="outline" class="full-width">
     <mat-label>Choose City</mat-label>
-    <mat-select>
-        <mat-option *ngFor="let city of this.cities$ | async" [value]="">{{
+    <mat-select [formControl]="cityControl">
+        <mat-option *ngFor="let city of this.cities$ | async" [value]="city">{{
             city
         }}</mat-option>
     </mat-select>

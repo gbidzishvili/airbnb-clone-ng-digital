@@ -9,7 +9,9 @@ import { FormValidationService } from '../../services/form-validation.service';
 import { BaseProxyService } from '../../../../core/services/base-proxy.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Component({
     selector: 'app-sign-in',
     templateUrl: './sign-in.component.html',
@@ -46,9 +48,9 @@ export class SignInComponent implements OnInit {
                 'http://www.airbnb-digital-students.somee.com/api/User/LogIn',
                 true
             )
+            .pipe(untilDestroyed(this))
             .subscribe(
                 (response: any) => {
-                    console.log(response);
                     if (response.body && response.body.jwt) {
                         this.authService.setToken(response.body.jwt);
                         this.router.navigate(['/home']);
@@ -56,9 +58,7 @@ export class SignInComponent implements OnInit {
                 },
                 (error) => {
                     alert('Login Failed!');
-                    console.error('Login failed', error);
                 }
             );
-        console.log('rame');
     }
 }

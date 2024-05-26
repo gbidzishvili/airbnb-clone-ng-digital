@@ -2,7 +2,9 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormValidationService } from '../../services/form-validation.service';
 import { BaseProxyService } from '../../../../core/services/base-proxy.service';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Component({
     selector: 'app-registration',
     templateUrl: './registration.component.html',
@@ -52,13 +54,5 @@ export class RegistrationComponent implements OnInit {
     }
     onRegister() {
         const { confirmPassword, ...newUser } = this.registerForm.value;
-        console.log(newUser);
-        // this.baseProxySrv
-        //     .create(
-        //         JSON.stringify(newUser),
-        //         'http://www.airbnb-digital-students.somee.com/api/user/registerUser',
-        //         true
-        //     )
-        //     .subscribe((v) => console.log(v));
     }
 }

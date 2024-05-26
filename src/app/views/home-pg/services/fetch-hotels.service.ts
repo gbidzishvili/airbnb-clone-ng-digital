@@ -9,11 +9,12 @@ import {
     of,
 } from 'rxjs';
 import { Hotel } from '../models/hotel.model';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Injectable()
-export class FetchHotelsService implements OnDestroy {
+export class FetchHotelsService {
     private hotelsSubject = new BehaviorSubject<Hotel[]>([]);
-    fetchSub = new Subscription();
     get hotels$(): Observable<Hotel[]> {
         return this.hotelsSubject.asObservable();
     }
@@ -21,16 +22,14 @@ export class FetchHotelsService implements OnDestroy {
     constructor(private baseproxySrv: BaseProxyService) {}
 
     fetchHotels(url: string, filters: any = ''): any {
-        this.fetchSub = this.baseproxySrv
+        this.baseproxySrv
             .get<Hotel[]>(url, filters)
-            .pipe(catchError((err: Error) => of([])))
+            .pipe(
+                untilDestroyed(this),
+                catchError((err: Error) => of([]))
+            )
             .subscribe((hotels: Hotel[]) => {
                 this.hotelsSubject.next(hotels);
-                console.log(hotels);
             });
-    }
-
-    ngOnDestroy(): void {
-        this.fetchSub.unsubscribe();
     }
 }

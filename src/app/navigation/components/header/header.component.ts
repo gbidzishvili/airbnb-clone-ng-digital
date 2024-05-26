@@ -9,12 +9,18 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
     constructor(public router: Router) {}
-    navigateToRegister() {
-        this.router.navigate(['authorization', 'registration']);
-        console.log('sign up clicked');
-    }
-    navigateToLogin() {
-        this.router.navigate(['authorization', 'sign-in']);
-        console.log('sign in clicked');
+    // navigateToRegister() {
+    //     this.router.navigate(['authorization/registration']);
+    //     // console.log('sign up clicked');
+    // }
+    // navigateToLogin() {
+    //     this.router.navigate(['authorization/sign-in']);
+    //     // console.log('sign in clicked');
+    // }
+    // navigateToHome() {
+    //     this.router.navigate(['home']);
+    // }
+    navigateTo(route: string) {
+        this.router.navigate([route]);
     }
 }

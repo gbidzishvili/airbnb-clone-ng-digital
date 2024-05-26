@@ -53,18 +53,28 @@
                 <button
                     mat-menu-item
                     class="menu-item-s"
-                    (click)="navigateToRegister()"
+                    (click)="navigateTo('authorization/registration')"
                 >
                     <mat-icon>app_registration</mat-icon>
                     <span>Sign up</span>
                 </button>
+
                 <button
-                    (click)="navigateToLogin()"
+                    (click)="navigateTo('authorization/sign-in')"
                     mat-menu-item
                     class="menu-item-s"
                 >
                     <mat-icon>login</mat-icon>
                     <span>log in</span>
+                </button>
+                <hr />
+                <button
+                    (click)="navigateTo('home')"
+                    mat-menu-item
+                    class="menu-item-s"
+                >
+                    <mat-icon>home</mat-icon>
+                    <span>home</span>
                 </button>
             </ng-template>
         </mat-menu>

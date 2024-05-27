@@ -21,7 +21,11 @@
             *ngFor="let slide of slides; let i = index"
             [@slideInOut]="currentSlide"
         >
-            <img *ngIf="currentSlide === i" [src]="slide.url" alt="" />
+            <img
+                *ngIf="currentSlide === i"
+                [src]="slide.url"
+                alt="hotel-image"
+            />
         </div>
     </div>
     <!-- slider dots -->

@@ -1,1 +1,108 @@
-<app-reservation-summary></app-reservation-summary>
+<div class="main-container">
+    <div class="main-title">Confirm and pay</div>
+    <div class="trip-info-card-container">
+        <div class="trip-info">
+            <div class="trip-info-title">Your trip</div>
+            <div class="dates">
+                <span class="dates-title">Dates</span>
+                <div class="actual-dates-edit-container">
+                    <div class="actual-dates">
+                        <span class="start-end-date">{{
+                            reservationSummarySrv.startDate$
+                                | async
+                                | date : "MMMM d"
+                        }}</span>
+                        <span class="start-end-date">-</span>
+                        <span class="start-end-date">{{
+                            reservationSummarySrv.endDate$
+                                | async
+                                | date : "MMMM d"
+                        }}</span>
+                    </div>
+                    <div class="edit">Edit</div>
+                </div>
+            </div>
+            <div class="dates">
+                <span class="dates-title">Guests</span>
+                <div class="actual-dates-edit-container">
+                    <div class="actual-dates">
+                        <span class="start-end-date">1 guest</span>
+                    </div>
+                    <div class="edit">Edit</div>
+                </div>
+            </div>
+            <hr />
+            <div class="trip-info-title recovery">Add recovery number</div>
+            <mat-form-field appearance="outline" class="number-input">
+                <mat-label>recovery number</mat-label>
+                <input
+                    matInput
+                    placeholder="#########"
+                    maxlength="9"
+                    (keypress)="($event.charCode >= 48 && $event.charCode < 58)"
+                />
+                <mat-hint
+                    >We’ll text you to confirm your number.
+                    <span>Privacy Policy</span></mat-hint
+                >
+            </mat-form-field>
+
+            <button
+                *ngIf="reservationSummarySrv.hotel$ | async as hotel"
+                class="reserve-button"
+                (click)="gotoTripPage(hotel)"
+            >
+                Continue
+            </button>
+        </div>
+        <div
+            class="card-container"
+            *ngIf="reservationSummarySrv.hotel$ | async as hotel"
+        >
+            <div class="header">
+                <img
+                    class="header-image"
+                    [src]="hotel.images[0].url"
+                    [alt]="hotel.name"
+                />
+                <div class="header-description">
+                    <div class="hotel-name">{{ hotel.name | uppercase }}</div>
+                    <div class="hotel-description">
+                        {{ hotel.description | textShortener : 15 }}
+                    </div>
+                    <div class="hotel-room-type">
+                        Roomtype: {{ hotel.rooms[0].roomType }}
+                    </div>
+                    <div class="hotel-rating">
+                        <mat-icon>star</mat-icon>{{ hotel.rating }}
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="title">Price details</div>
+            <div class="price space-between">
+                <span class="price-details">
+                    {{
+                        hotel.rooms[0].pricePerNight
+                            | currency : "USD" : "symbol" : "1.0-0"
+                    }}
+                    x {{ priceCalculatorService.nights$ | async }} nights
+                </span>
+                <span class="price-total">{{
+                    priceCalculatorService.total$
+                        | async
+                        | currency : "USD" : "symbol" : "1.0-0"
+                }}</span>
+            </div>
+            <hr />
+            <div class="before-taxes space-between">
+                <span> Total (USD)</span>
+                <span>{{
+                    priceCalculatorService.total$
+                        | async
+                        | currency : "USD" : "symbol" : "1.0-0"
+                }}</span>
+            </div>
+        </div>
+    </div>
+</div>

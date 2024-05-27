@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HotelComponent } from './components/hotel/hotel.component';
+import { HotelComponent } from '../../shared/components/hotel/hotel.component';
 import { HotelListComponent } from './containers/hotel-list/hotel-list.component';
 import { MatIconModule } from '@angular/material/icon';
 import { HomePgComponent } from './home-pg.component';
@@ -20,7 +20,7 @@ import { FetchHotelsService } from './services/fetch-hotels.service';
 @NgModule({
     declarations: [
         HomePgComponent,
-        HotelComponent,
+
         HotelListComponent,
         FilterComponent,
         AmenitiesComponent,

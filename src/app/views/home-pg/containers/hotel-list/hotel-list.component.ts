@@ -15,7 +15,6 @@ import { FetchHotelsService } from '../../services/fetch-hotels.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HotelListComponent implements OnInit {
-    @Input() title: string = '';
     ErrorMessage!: string;
     hotels$!: Observable<Hotel[]>;
     constructor(public fetchHotelsSrv: FetchHotelsService) {}

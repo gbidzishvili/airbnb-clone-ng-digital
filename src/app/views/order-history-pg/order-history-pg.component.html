@@ -1,0 +1,15 @@
+<section class="trending-stays">
+    <div class="header">Order <span>history</span></div>
+    <ul>
+        <div class="hotel-list" *ngIf="hotels$ | async as hotelArr">
+            <div *ngIf="hotelArr.length === 0; else hotels">
+                <h1>{{ ErrorMessage }}</h1>
+            </div>
+            <ng-template #hotels>
+                <li *ngFor="let hotel of hotelArr">
+                    <app-hotel [hotelInfo]="hotel"></app-hotel>
+                </li>
+            </ng-template>
+        </div>
+    </ul>
+</section>

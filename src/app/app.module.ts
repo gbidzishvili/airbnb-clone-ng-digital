@@ -10,8 +10,8 @@ import { HomePgModule } from './views/home-pg/home-pg.module';
 import { DetailsPgModule } from './views/details-pg/details-pg.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfirmReservationPgModule } from './views/confirm-reservation-pg/confirm-reservation-pg.module';
-import { OrderHistoryPgComponent } from './views/order-history-pg/order-history-pg.component';
 import { OrderHistoryPgModule } from './views/order-history-pg/order-history-pg.module';
+import { PersonalInfoPgPgModule } from './views/personal-info-pg/personal-info-pg.module';
 
 @NgModule({
     declarations: [AppComponent],
@@ -25,6 +25,7 @@ import { OrderHistoryPgModule } from './views/order-history-pg/order-history-pg.
         OrderHistoryPgModule,
         DetailsPgModule,
         ConfirmReservationPgModule,
+        PersonalInfoPgPgModule,
     ],
     providers: [provideAnimationsAsync()],
     bootstrap: [AppComponent],

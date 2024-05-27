@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 import { PriceCalculatorService } from '../../services/price-calculator.service';
 import { Hotel } from '../../../home-pg/models/hotel.model';
 import { Router } from '@angular/router';
+import { ReservationDataSharingService } from '../../../services/reservation-data-sharing.service';
 
 @Component({
     selector: 'app-calculator',
@@ -28,7 +29,8 @@ export class CalculatorComponent {
 
     constructor(
         public priceCalculatorService: PriceCalculatorService,
-        private router: Router
+        private router: Router,
+        private reservationData: ReservationDataSharingService
     ) {}
 
     gotoConfirmReservation() {
@@ -37,5 +39,6 @@ export class CalculatorComponent {
         // console.log(this.priceCalculatorService.startDate$);
         // console.log(this.priceCalculatorService.endDate$);
         this.router.navigate(['reservation']);
+        this.reservationData.updateReservationData(this.hotel);
     }
 }

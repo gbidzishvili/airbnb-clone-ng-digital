@@ -1,0 +1,39 @@
+.registration-form {
+    margin: 10rem auto;
+    padding: 1rem 2rem;
+    min-width: 15rem;
+    max-width: 50rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.06);
+}
+
+.full-width {
+    width: 100%;
+}
+.form-header {
+    text-align: center;
+    h1 {
+        span {
+            color: #ff5a5f;
+            font-weight: 600;
+        }
+    }
+}
+button.submit {
+    margin-bottom: 3rem;
+}
+mat-error {
+    white-space: pre-wrap; /* Allows the text to wrap */
+    overflow-wrap: break-word; /* Ensures long words do not overflow */
+}
+.form-footer {
+    display: block;
+    text-align: center;
+    a {
+        text-decoration: underline;
+        color: #ff5a5f;
+        cursor: pointer;
+    }
+    margin-bottom: 2rem;
+}

@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { PersonalInfoPgRoutingModule } from './personal-info-pg-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PersonalInfoPgComponent } from './personal-info-pg.component';
+import { SharedComponentsModule } from '../../shared/components/shared-components.module';
 
 @NgModule({
     declarations: [PersonalInfoPgComponent],
@@ -12,6 +13,7 @@ import { PersonalInfoPgComponent } from './personal-info-pg.component';
         BrowserAnimationsModule,
         CommonModule,
         PersonalInfoPgRoutingModule,
+        SharedComponentsModule,
     ],
     providers: [],
 })

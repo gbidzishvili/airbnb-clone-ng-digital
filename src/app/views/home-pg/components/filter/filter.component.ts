@@ -12,7 +12,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 export class FilterComponent implements OnInit {
     constructor(public dialog: MatDialog) {}
     ngOnInit(): void {
-        // const dialogRef = this.dialog.open(FilterHotelsModalComponent);
+        // this.dialog.open(FilterHotelsModalComponent);
     }
     openFilterModal() {
         const dialogRef = this.dialog.open(FilterHotelsModalComponent);

@@ -4,6 +4,7 @@ import { Observable, map } from 'rxjs';
 import { Hotel } from '../../../../views/home-pg/models/hotel.model';
 import { FetchAmenitiesService } from '../../../../views/home-pg/services/fetch-amenities.service';
 import { amenity } from '../../../../views/home-pg/models';
+import { FitlerService } from '../../sevices/fitler.service';
 
 @Component({
     selector: 'app-choose-amenities',
@@ -12,10 +13,10 @@ import { amenity } from '../../../../views/home-pg/models';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChooseAmenitiesComponent implements OnInit {
-    amenities$!: Observable<amenity[]>;
     constructor(
         public fetchHotelsService: FetchHotelsService,
-        public fetchAmenities: FetchAmenitiesService
+        public fetchAmenities: FetchAmenitiesService,
+        public filterService: FitlerService
     ) {}
     ngOnInit(): void {
         this.initAmenities();
@@ -24,5 +25,9 @@ export class ChooseAmenitiesComponent implements OnInit {
         this.fetchAmenities.fetchAmenities(
             'http://www.airbnb-digital-students.somee.com/getall'
         );
+    }
+    sendData(i: number, amenity: amenity) {
+        this.filterService.buildUrlObject('amenity', { i, amenity });
+        console.log(i, amenity);
     }
 }

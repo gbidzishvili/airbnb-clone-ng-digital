@@ -3,10 +3,12 @@
     <div class="amenities-list">
         <div class="amenities-grid">
             <mat-checkbox
+                (click)="sendData(i, amenity)"
                 *ngFor="
                     let amenity of fetchAmenities.amenities$
                         | async
-                        | slice : 0 : 9
+                        | slice : 0 : 9;
+                    let i = index
                 "
                 class="example-margin"
                 >{{ amenity.name }}</mat-checkbox

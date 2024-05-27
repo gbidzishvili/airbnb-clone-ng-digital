@@ -26,7 +26,7 @@ export class ChooseCityComponent implements OnInit {
             .pipe(untilDestroyed(this))
             .subscribe((city) => {
                 console.log('Selected city:', city);
-                this.filterService.buildUrl('city', city);
+                this.filterService.buildUrlObject('city', city);
             });
     }
     get cities$(): Observable<string[]> {

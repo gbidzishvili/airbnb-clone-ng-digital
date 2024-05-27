@@ -17,6 +17,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Hotel } from '../home-pg/models/hotel.model';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ReservationDataSharingService } from '../services/reservation-data-sharing.service';
 
 @UntilDestroy()
 @Component({
@@ -44,7 +45,8 @@ export class DetailsPgComponent implements OnInit {
 
     constructor(
         public baseProxySrv: BaseProxyService,
-        public route: ActivatedRoute
+        public route: ActivatedRoute,
+        public reservationDataSharing: ReservationDataSharingService
     ) {}
     getNights(recivedObject: {
         nights: number;
@@ -52,6 +54,10 @@ export class DetailsPgComponent implements OnInit {
         endDate: Date;
     }) {
         this.nights.next(recivedObject);
+        this.reservationDataSharing.getDates(
+            recivedObject.startDate,
+            recivedObject.endDate
+        );
     }
     ngOnInit(): void {
         this.route.paramMap

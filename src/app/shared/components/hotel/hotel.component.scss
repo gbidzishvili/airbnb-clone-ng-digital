@@ -1,0 +1,37 @@
+.hotel-card {
+    &-image-container {
+        position: relative;
+        // .carousel {
+        //     display: flex;
+        //     position: relative;
+        //     overflow: hidden;
+        //     width: 100%;
+        // }
+    }
+    &-info-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        list-style: none;
+        .hotel-name {
+            font-weight: bold;
+        }
+        .hotel-reviews {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            font-weight: bold;
+            mat-icon {
+                font-size: 2rem;
+                height: 2rem;
+            }
+        }
+        .hotel-description {
+            color: #717171;
+            grid-column: 1/-1;
+        }
+        .hotel-price {
+            font-weight: 500;
+            grid-column: 1/-1;
+        }
+    }
+}

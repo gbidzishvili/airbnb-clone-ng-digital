@@ -5,12 +5,14 @@ import { Injectable } from '@angular/core';
 })
 export class FitlerService {
     myUrl = '?';
-    city!: string;
+    urlBuildObj!: { [key: string]: string | string[] };
     constructor() {}
 
     buildUrl(filter: string, value: [] | string) {
         if (!Array.isArray(value)) {
-            // this. = ""
+            console.log('filter-value', filter, value);
+            this.urlBuildObj[filter] = value;
+            console.log(this.urlBuildObj);
         }
     }
 }

@@ -77,4 +77,7 @@ export class RegistrationComponent implements OnInit {
             .create(newUser, url)
             .subscribe((v) => console.log('value is printed:', v));
     }
+    gotoSignIn() {
+        this.router.navigate(['/authorization/sign-in']);
+    }
 }

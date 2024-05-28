@@ -36,6 +36,9 @@ A step-by-step series of examples that tell you how to get a development environ
 
 ## Application structure
 
+-   implemented lazy loading
+-   SCSS is used for Styles
+
 ```mermaid
     graph TB
     A["app"]
@@ -73,10 +76,6 @@ A step-by-step series of examples that tell you how to get a development environ
 
 -   ngneat/until-destroy - provides a way to manage subscriptions automatically
 -   angular material
-
-## Tools
-
--   scss
 
 #Author
 

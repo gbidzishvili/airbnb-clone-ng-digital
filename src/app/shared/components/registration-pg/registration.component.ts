@@ -68,12 +68,13 @@ export class RegistrationComponent implements OnInit {
         );
     }
     onRegister() {
+        let url = !this.personalInfo
+            ? 'http://www.airbnb-digital-students.somee.com/api/user/registerUser'
+            : 'http://www.airbnb-digital-students.somee.com/api/User/updateuserdata';
+        console.log('url is:', url);
         const { confirmPassword, ...newUser } = this.registerForm.value;
         this.baseProxySrv
-            .create(
-                newUser,
-                'http://www.airbnb-digital-students.somee.com/api/user/registerUser'
-            )
+            .create(newUser, url)
             .subscribe((v) => console.log('value is printed:', v));
     }
 }

@@ -11,7 +11,9 @@ import { DetailsPgModule } from './views/details-pg/details-pg.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfirmReservationPgModule } from './views/confirm-reservation-pg/confirm-reservation-pg.module';
 import { OrderHistoryPgModule } from './views/order-history-pg/order-history-pg.module';
-import { PersonalInfoPgPgModule } from './views/personal-info-pg/personal-info-pg.module';
+import { UpdateInfoPgPgModule } from './views/update-info-pg/update-info-pg.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from './core/interceptors/token-interceptor.service';
 
 @NgModule({
     declarations: [AppComponent],
@@ -25,9 +27,16 @@ import { PersonalInfoPgPgModule } from './views/personal-info-pg/personal-info-p
         OrderHistoryPgModule,
         DetailsPgModule,
         ConfirmReservationPgModule,
-        PersonalInfoPgPgModule,
+        UpdateInfoPgPgModule,
     ],
-    providers: [provideAnimationsAsync()],
+    providers: [
+        provideAnimationsAsync(),
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: TokenInterceptorService,
+            multi: true,
+        },
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

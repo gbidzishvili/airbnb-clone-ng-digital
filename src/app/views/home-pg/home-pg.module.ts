@@ -27,8 +27,6 @@ import { FetchHotelsService } from './services/fetch-hotels.service';
         FiltersContainerComponent,
     ],
     imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
         CommonModule,
         HomePgRoutingModule,
         MatIconModule,

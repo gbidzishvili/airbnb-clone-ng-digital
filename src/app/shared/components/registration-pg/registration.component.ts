@@ -1,9 +1,15 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Input,
+    OnInit,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormValidationService } from '../../../views/authorization/services/form-validation.service';
 import { BaseProxyService } from '../../../core/services/base-proxy.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @UntilDestroy()
 @Component({
@@ -17,15 +23,19 @@ export class RegistrationComponent implements OnInit {
     hideConfirm = true;
     registerForm!: FormGroup;
     options = ['male', 'female'];
+    @Input() personalInfo!: boolean;
     constructor(
         public validationSrv: FormValidationService,
         public baseProxySrv: BaseProxyService,
         public router: Router
     ) {}
     ngOnInit() {
-        this.router.events.pipe(untilDestroyed(this)).subscribe((url: any) => {
-            console.log(url.routerEvent.url);
-        });
+        // this.router.events.pipe(untilDestroyed(this)).subscribe((url: any) => {
+        //     console.log(url.routerEvent.url);
+        // });
+        this.initForm();
+    }
+    initForm() {
         this.registerForm = new FormGroup(
             {
                 userName: new FormControl(null, Validators.required),

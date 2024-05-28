@@ -5,7 +5,13 @@ import { authGuard } from '../../core/guard/auth.guard';
 import { logoutGuard } from '../../core/guard/logout.guard';
 
 const routes: Routes = [
-    { path: 'home', component: HomePgComponent, canActivate: [authGuard] },
+    // {
+    //     path: '',
+    //     redirectTo: 'home',
+    //     pathMatch: 'full',
+    //     // canActivate: [authGuard],
+    // },
+    { path: '', component: HomePgComponent, canActivate: [authGuard] },
 ];
 
 @NgModule({

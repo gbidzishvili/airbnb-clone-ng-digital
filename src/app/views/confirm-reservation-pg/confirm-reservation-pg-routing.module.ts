@@ -6,7 +6,7 @@ import { ConfirmReservationPgComponent } from './confirm-reservation-pg.componen
 
 const routes: Routes = [
     {
-        path: 'reservation',
+        path: '',
         component: ConfirmReservationPgComponent,
         canActivate: [authGuard],
     },

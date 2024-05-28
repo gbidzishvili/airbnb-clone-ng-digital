@@ -5,9 +5,8 @@ import { RegistrationComponent } from '../../shared/components/registration-pg/r
 import { AuthorizationComponent } from './authorization.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: 'authorization', pathMatch: 'full' },
     {
-        path: 'authorization',
+        path: '',
         component: AuthorizationComponent,
         children: [
             {

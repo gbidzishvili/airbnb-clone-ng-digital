@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { authGuard } from '../../core/guard/auth.guard';
 import { logoutGuard } from '../../core/guard/logout.guard';
-import { PersonalInfoPgComponent } from './personal-info-pg.component';
+import { UpdateInfoPgComponent } from './update-info-pg.component';
 
 const routes: Routes = [
     {
-        path: 'personal-info',
-        component: PersonalInfoPgComponent,
+        path: '',
+        component: UpdateInfoPgComponent,
         canActivate: [authGuard],
     },
 ];
@@ -16,4 +16,4 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule],
 })
-export class PersonalInfoPgRoutingModule {}
+export class UpdateInfoPgRoutingModule {}

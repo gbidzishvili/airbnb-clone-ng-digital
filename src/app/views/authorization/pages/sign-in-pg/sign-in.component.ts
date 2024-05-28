@@ -53,11 +53,12 @@ export class SignInComponent implements OnInit {
                 (response: any) => {
                     if (response.body && response.body.jwt) {
                         this.authService.setToken(response.body.jwt);
-                        this.router.navigate(['/home']);
+                        // this.router.navigate(['/home']);
+                        this.router.navigateByUrl('/home');
                     }
                 },
                 (error) => {
-                    alert('Login Failed!');
+                    alert('Login Failed. enter valid credentials!');
                 }
             );
     }

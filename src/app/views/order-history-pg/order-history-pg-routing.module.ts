@@ -6,7 +6,7 @@ import { OrderHistoryPgComponent } from './order-history-pg.component';
 
 const routes: Routes = [
     {
-        path: 'trip',
+        path: '',
         component: OrderHistoryPgComponent,
         canActivate: [authGuard],
     },

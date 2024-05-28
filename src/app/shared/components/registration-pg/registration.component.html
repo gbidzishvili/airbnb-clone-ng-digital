@@ -4,7 +4,10 @@
     (ngSubmit)="onRegister()"
 >
     <div class="form-header">
-        <h1>Create <span>new account</span></h1>
+        <h1>
+            {{ personalInfo ? "Update" : "Create" }}
+            <span>{{ personalInfo ? "your" : "new" }} account</span>
+        </h1>
     </div>
     <section>
         <mat-form-field appearance="outline" class="full-width">
@@ -22,7 +25,6 @@
         <mat-form-field appearance="outline" class="full-width">
             <mat-label>email</mat-label>
             <input formControlName="email" matInput placeholder="Enter email" />
-            <!-- <mat-icon matSuffix>mail</mat-icon> -->
             <mat-error *ngIf="registerForm.get('email')?.invalid"
                 >{{ validationSrv.getControlError(registerForm, "email") }}
             </mat-error>
@@ -128,7 +130,7 @@
             </mat-error>
         </mat-form-field>
         <button class="full-width submit" type="submit" mat-raised-button>
-            Sign Up
+            {{ personalInfo ? "Update" : "Sign Up" }}
         </button>
     </section>
     <div class="form-footer">

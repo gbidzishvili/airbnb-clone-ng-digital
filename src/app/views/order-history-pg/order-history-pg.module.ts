@@ -16,8 +16,6 @@ import { HomePgModule } from '../home-pg/home-pg.module';
 @NgModule({
     declarations: [OrderHistoryPgComponent],
     imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
         CommonModule,
         OrderHistoryPgRoutingModule,
         MatIconModule,

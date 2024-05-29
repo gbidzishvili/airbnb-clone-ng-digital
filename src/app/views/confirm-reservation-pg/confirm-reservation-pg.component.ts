@@ -4,6 +4,7 @@ import { PriceCalculatorService } from '../details-pg/services/price-calculator.
 import { Hotel } from '../home-pg/models/hotel.model';
 import { ReservationDataSharingService } from '../services/reservation-data-sharing.service';
 import { Router } from '@angular/router';
+import { BaseProxyService } from '../../core/services/base-proxy.service';
 
 @Component({
     selector: 'app-confirm-reservation-pg',
@@ -15,6 +16,7 @@ export class ConfirmReservationPgComponent {
     constructor(
         public priceCalculatorService: PriceCalculatorService,
         public reservationSummarySrv: ReservationDataSharingService,
+        public baseproxySrv: BaseProxyService,
         public router: Router
     ) {}
     gotoTripPage(hotel: Hotel) {
@@ -22,6 +24,13 @@ export class ConfirmReservationPgComponent {
         const exist = hotels.some((h: Hotel) => h.id === hotel.id);
         if (!exist) hotels.push(hotel);
         localStorage.setItem('hotels', JSON.stringify(hotels));
+
+        this.baseproxySrv
+            .create(
+                hotel.id,
+                'http://www.airbnb-digital-students.somee.com/add-reservation'
+            )
+            .subscribe((v) => console.log('add reservation', v));
         this.router.navigate(['trip']);
     }
 }

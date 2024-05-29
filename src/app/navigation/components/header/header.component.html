@@ -51,6 +51,15 @@
         <mat-menu #menu="matMenu">
             <ng-template matMenuContent>
                 <button
+                    (click)="navigateTo('home')"
+                    mat-menu-item
+                    class="menu-item-s"
+                >
+                    <mat-icon>home</mat-icon>
+                    <span>home</span>
+                </button>
+                <hr />
+                <button
                     mat-menu-item
                     class="menu-item-s"
                     (click)="navigateTo('authorization/registration')"
@@ -74,15 +83,6 @@
                 >
                     <mat-icon>logout</mat-icon>
                     <span>log out</span>
-                </button>
-                <hr />
-                <button
-                    (click)="navigateTo('home')"
-                    mat-menu-item
-                    class="menu-item-s"
-                >
-                    <mat-icon>home</mat-icon>
-                    <span>home</span>
                 </button>
             </ng-template>
         </mat-menu>

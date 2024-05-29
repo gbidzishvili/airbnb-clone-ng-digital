@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { AuthService } from '../../../views/authorization/services/auth.service';
 
 @Component({
     selector: 'app-header',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-    constructor(public router: Router) {}
+    constructor(public router: Router, public authService: AuthService) {}
     // navigateToRegister() {
     //     this.router.navigate(['authorization/registration']);
     //     // console.log('sign up clicked');
@@ -20,7 +21,14 @@ export class HeaderComponent {
     // navigateToHome() {
     //     this.router.navigate(['home']);
     // }
-    navigateTo(route: string) {
+    navigateTo(route: string, logout: boolean = false) {
+        if (logout) {
+            if (confirm('do you want to leave the page?')) {
+                this.authService.clearToken();
+                this.router.navigate([route]);
+            }
+            return;
+        }
         this.router.navigate([route]);
     }
 }

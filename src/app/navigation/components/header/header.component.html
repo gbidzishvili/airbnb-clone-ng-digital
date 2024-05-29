@@ -67,6 +67,14 @@
                     <mat-icon>login</mat-icon>
                     <span>log in</span>
                 </button>
+                <button
+                    (click)="navigateTo('authorization/sign-in', true)"
+                    mat-menu-item
+                    class="menu-item-s"
+                >
+                    <mat-icon>logout</mat-icon>
+                    <span>log out</span>
+                </button>
                 <hr />
                 <button
                     (click)="navigateTo('home')"

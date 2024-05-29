@@ -5,7 +5,9 @@ import { Hotel } from '../home-pg/models/hotel.model';
 import { ReservationDataSharingService } from '../services/reservation-data-sharing.service';
 import { Router } from '@angular/router';
 import { BaseProxyService } from '../../core/services/base-proxy.service';
-
+import { Reservation } from './models/reservation.model';
+import { of, switchMap } from 'rxjs';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 @Component({
     selector: 'app-confirm-reservation-pg',
     templateUrl: './confirm-reservation-pg.component.html',
@@ -17,20 +19,31 @@ export class ConfirmReservationPgComponent {
         public priceCalculatorService: PriceCalculatorService,
         public reservationSummarySrv: ReservationDataSharingService,
         public baseproxySrv: BaseProxyService,
-        public router: Router
+        public router: Router,
+        public http: HttpClient
     ) {}
     gotoTripPage(hotel: Hotel) {
-        let hotels = JSON.parse(localStorage.getItem('hotels') || '[]');
-        const exist = hotels.some((h: Hotel) => h.id === hotel.id);
-        if (!exist) hotels.push(hotel);
-        localStorage.setItem('hotels', JSON.stringify(hotels));
-
+        const body = {
+            hotelId: hotel.id.toString(),
+        };
         this.baseproxySrv
-            .create(
-                hotel.id,
-                'http://www.airbnb-digital-students.somee.com/add-reservation'
+            .get(
+                'http://www.airbnb-digital-students.somee.com/get-reservations'
             )
-            .subscribe((v) => console.log('add reservation', v));
-        this.router.navigate(['trip']);
+            .pipe(
+                switchMap((hotels: any) => {
+                    const exist = hotels.some(
+                        (h: Reservation) => h.hotelId === hotel.id.toString()
+                    );
+                    if (!exist) {
+                        return this.baseproxySrv.create(
+                            body,
+                            'http://www.airbnb-digital-students.somee.com/add-reservation'
+                        );
+                    }
+                    return of(null); // Ensure there's always an Observable being returned
+                })
+            )
+            .subscribe((result) => this.router.navigate(['trip']));
     }
 }

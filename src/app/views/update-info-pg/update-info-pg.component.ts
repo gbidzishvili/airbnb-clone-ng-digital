@@ -1,7 +1,9 @@
 import { HttpHeaders } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { BaseProxyService } from '../../core/services/base-proxy.service';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Component({
     selector: 'app-update-info-pg',
     templateUrl: './update-info-pg.component.html',
@@ -16,6 +18,7 @@ export class UpdateInfoPgComponent implements OnInit {
     // new HttpHeaders().set("authrized":token)
     updateUser() {
         this.baseProxyService
+
             .updateFullModel(
                 {
                     id: 'string1',
@@ -28,6 +31,7 @@ export class UpdateInfoPgComponent implements OnInit {
                 },
                 'http://www.airbnb-digital-students.somee.com/api/User/updateuserdata'
             )
-            .subscribe((v) => console.log(v));
+            .pipe(untilDestroyed(this))
+            .subscribe();
     }
 }

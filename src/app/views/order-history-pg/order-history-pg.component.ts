@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Observable, from, of } from 'rxjs';
+import { Observable, forkJoin, from, of, switchMap } from 'rxjs';
 import { Hotel } from '../home-pg/models/hotel.model';
-
+import { BaseProxyService } from '../../core/services/base-proxy.service';
+import { Reservation } from '../confirm-reservation-pg/models/reservation.model';
 @Component({
     selector: 'app-order-history-pg',
     templateUrl: './order-history-pg.component.html',
@@ -13,13 +14,28 @@ export class OrderHistoryPgComponent implements OnInit {
     //     console.log(localStorage.getItem('hotels'));
     // }
     ErrorMessage!: string;
-    hotels$!: Observable<Hotel[]>;
-    constructor() {}
+    hotels$!: Observable<any>;
+    constructor(public baseProxySrv: BaseProxyService) {}
     ngOnInit() {
         this.initHotels();
     }
     initHotels() {
-        const hotelsString = localStorage.getItem('hotels');
-        this.hotels$ = hotelsString ? of(JSON.parse(hotelsString)) : of([]);
+        this.hotels$ = this.baseProxySrv
+            .get(
+                'http://www.airbnb-digital-students.somee.com/get-reservations'
+            )
+            .pipe(
+                switchMap((reservations: any): any => {
+                    if (reservations.length === 0) return of([]);
+                    const hotelObservables = reservations.map(
+                        (reservation: Reservation) =>
+                            this.baseProxySrv.getById(
+                                reservation.hotelId,
+                                'http://www.airbnb-digital-students.somee.com/get-by-id'
+                            )
+                    );
+                    return forkJoin(hotelObservables);
+                })
+            );
     }
 }

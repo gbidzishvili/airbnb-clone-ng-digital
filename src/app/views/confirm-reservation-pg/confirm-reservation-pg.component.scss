@@ -71,23 +71,22 @@
             width: 40%;
             border: 1px solid lightgray;
             border-radius: 1rem;
-
             .header {
                 display: flex;
                 justify-content: space-between;
                 gap: 1rem;
 
+                img {
+                    border-radius: 2rem;
+                    width: 50%;
+                    height: 15rem;
+                    object-fit: cover;
+                }
                 .header-description {
                     display: flex;
                     flex-direction: column;
                     align-items: space-between;
                     gap: 1rem;
-                    img {
-                        border-radius: 2rem;
-                        width: 10rem;
-                        height: 10rem;
-                        object-fit: cover;
-                    }
                     .hotel-name {
                         font-weight: 500;
                     }

@@ -33,7 +33,10 @@
             </div>
             <hr />
             <div class="trip-info-title recovery">Add recovery number</div>
-            <mat-form-field appearance="outline" class="number-input">
+            <mat-form-field
+                appearance="outline"
+                class="number-input margin-bottom"
+            >
                 <mat-label>recovery number</mat-label>
                 <input
                     matInput
@@ -46,7 +49,74 @@
                     <span>Privacy Policy</span></mat-hint
                 >
             </mat-form-field>
-
+            <hr />
+            <div class="trip-info-title recovery">Pay with</div>
+            <form class="card-form" [formGroup]="payForm">
+                <mat-form-field appearance="outline" class="number-input">
+                    <mat-label>Select an option</mat-label>
+                    <img
+                        matPrefix
+                        width="24px"
+                        height="24px"
+                        style="margin-left: 1rem"
+                        src="../../../assets/icons/card.svg"
+                    />
+                    <mat-select formControlName="cardSelect">
+                        <mat-option value="Credit or debit card">
+                            Credit or debit format card</mat-option
+                        >
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="number-input">
+                    <mat-label>cardNumber <mat-icon>lock</mat-icon></mat-label>
+                    <input
+                        credit-card
+                        formControlName="cardNumber"
+                        matInput
+                        placeholder="0000 0000 0000 0000"
+                        maxlength="19"
+                        (keypress)="
+                            ($event.charCode >= 48 && $event.charCode < 58)
+                        "
+                    />
+                </mat-form-field>
+                <div class="card-inner-container">
+                    <mat-form-field appearance="outline" class="short-input">
+                        <mat-label>expiration</mat-label>
+                        <input
+                            appExpirationDate
+                            maxlength="7"
+                            formControlName="expiration"
+                            matInput
+                            placeholder="expiration"
+                        />
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="short-input">
+                        <mat-label>CVV</mat-label>
+                        <input
+                            maxlength="4"
+                            formControlName="cvv"
+                            matInput
+                            placeholder="CVV"
+                            (keypress)="
+                                ($event.charCode >= 48 && $event.charCode < 58)
+                            "
+                        />
+                    </mat-form-field>
+                </div>
+                <mat-form-field appearance="outline" class="number-input">
+                    <mat-label>Zip Code</mat-label>
+                    <input
+                        formControlName="zip"
+                        matInput
+                        placeholder="Zip Code"
+                        maxlength="4"
+                        (keypress)="
+                            ($event.charCode >= 48 && $event.charCode < 58)
+                        "
+                    />
+                </mat-form-field>
+            </form>
             <button
                 *ngIf="reservationSummarySrv.hotel$ | async as hotel"
                 class="reserve-button"

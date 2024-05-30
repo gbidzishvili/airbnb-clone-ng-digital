@@ -4,6 +4,7 @@
         height="50px"
         src="../../../../assets/icons/abnb.svg"
         alt="airbnb logo"
+        (click)="navigateTo('home')"
     />
     <div>
         <button
@@ -51,6 +52,14 @@
         <mat-menu #menu="matMenu">
             <ng-template matMenuContent>
                 <button
+                    (click)="navigateTo('trip')"
+                    mat-menu-item
+                    class="menu-item-s"
+                >
+                    <mat-icon>history</mat-icon>
+                    <span>history</span>
+                </button>
+                <button
                     (click)="navigateTo('home')"
                     mat-menu-item
                     class="menu-item-s"
@@ -59,6 +68,15 @@
                     <span>home</span>
                 </button>
                 <hr />
+                <button
+                    *ngIf="hasAuthToken"
+                    mat-menu-item
+                    class="menu-item-s"
+                    (click)="navigateTo('personal-info')"
+                >
+                    <mat-icon>edit</mat-icon>
+                    <span>Account</span>
+                </button>
                 <button
                     mat-menu-item
                     class="menu-item-s"

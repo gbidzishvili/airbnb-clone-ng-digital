@@ -27,7 +27,7 @@ export class ChooseAmenitiesComponent implements OnInit {
         );
     }
     sendData(i: number, amenity: amenity) {
-        this.filterService.buildUrlObject('amenity', { i, amenity });
-        console.log(i, amenity);
+        this.filterService.buildUrlObject('amenity', amenity);
+        // console.log(i, amenity);
     }
 }

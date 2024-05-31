@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     Input,
+    OnInit,
     ViewEncapsulation,
 } from '@angular/core';
 import { Hotel } from './models/hotel.model';

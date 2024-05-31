@@ -28,7 +28,4 @@ export class PriceRangeComponent {
                 value.toString()
             );
     }
-    onclick() {
-        console.log(this.sliderForm);
-    }
 }
